@@ -5,4 +5,7 @@ public interface QuestionGen {
     float numGen();
 
 
+
+    
+
 }//end of interface
