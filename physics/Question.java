@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 public class Question {
     
     int numVars; // number of variables in a family of formulae
