@@ -20,6 +20,9 @@ public class Question {
         return (lo + ( (hi-lo+1) * Math.random() )) * Math.pow(10,pow);
     }
 
+    //abstract chooseVar() -- assigns random values to all but one variale
+    public abstract void chooseVar();
+
 } // close class Question
     
 
