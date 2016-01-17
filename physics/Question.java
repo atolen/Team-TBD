@@ -14,7 +14,7 @@ public class Question {
         return (int)(lo + ( (hi-lo+1) * Math.random() ));
     }
 
-    // ...to a power
+    // overloaded randomNum() -- scientific notation (sort of)
     public static double randomNum( int lo, int hi, int pow ) {
 	//     offset + rand int on interval [lo,hi]
         return (lo + ( (hi-lo+1) * Math.random() )) * Math.pow(10,pow);
