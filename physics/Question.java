@@ -4,7 +4,7 @@ public abstract class Question {
     protected int numVars; // number of variables in a family of formulae
     protected float userInput; // user's answer to question
     protected float rightAns; // correct answer to question
-    protected ArrayList vars; // list of vars
+    protected ArrayList vars = new ArrayList(); // list of vars
 
     //manually populates AL "vars" w/ class-specific instance vars
     public abstract void populate();
@@ -24,21 +24,21 @@ public abstract class Question {
     
     
     //randomly rearrang elements of an ArrayList
-    public static void shuffle( ArrayList al) {
+    public void shuffle() {
 	int randomIndex;
-	for( int i = al.size()-1; i > 0; i--) {
+	for( int i = vars.size()-1; i > 0; i--) {
 	    //pick an index at random
 	    randomIndex = (int)( (i+1) * Math.random() );
 	    //swap the values at position i and randomIndex
-	    al.set( i, al.set( randomIndex, al.get(i) ) );
+	    vars.set( i, vars.set( randomIndex, vars.get(i) ) );
 	}
     }
 
     //chooseVar() -- assigns random values to all but one varible
-    public static void chooseVar(int lo, int hi, int pow) {
-	shuffle( vars );
+    public void chooseVar(int lo, int hi, int pow) {
+	shuffle();
 	for (int i = 1; i < vars.size(); i++) {
-	    vars[i].set(randomNum(lo, hi, pow));
+	    vars.set(i, randomNum(lo, hi, pow));
 	}
     }
 
