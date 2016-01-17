@@ -2,16 +2,9 @@
   DEVLOG
 ==========
 
-=2016-01-13=
-
+2016-01-13
 IN CLASS
+
 Mapped out structure of the physics half.
 Looking into Gaussian elimination and other algorithms that could potentially help us.
--G&A
-
-=2016-01-17=
-
-AT HOME
-Decided that best way is to hardcode fxns.
-Began coding class Character.
 -G&A
