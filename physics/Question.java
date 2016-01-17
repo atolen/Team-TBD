@@ -1,6 +1,5 @@
 import java.util.ArrayList;
-import java.math.*;
-public abstract class Question {
+public class Question {
     
     int numVars; // number of variables in a family of formulae
     float userInput; // user's answer to question
@@ -9,13 +8,18 @@ public abstract class Question {
     
     
     //precond: lo < hi
-    //postcond: returns random floating point number within specified range
+    //postcond: returns random int within specified range
     public static int randomNum( int lo, int hi ) {
 	//     offset + rand int on interval [lo,hi]
         return (int)(lo + ( (hi-lo+1) * Math.random() ));
-	
     }
-    
+
+    // ...to a power
+    public static double randomNum( int lo, int hi, int pow ) {
+	//     offset + rand int on interval [lo,hi]
+        return (lo + ( (hi-lo+1) * Math.random() )) * Math.pow(10,pow);
+    }
+
 } // close class Question
     
 
