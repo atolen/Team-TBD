@@ -11,6 +11,20 @@ public class KinCalculator extends Kinematics {
     }
 
     public void whichFxn() {
+	if !(containsKey("d")) {//kin5, kin12 find d
+	    }
+
+	if else !(containsKey("vi")) {//kin3, kin6, kin10 find vi
+	    }
+
+	if else !(containsKey("vf")) {//kin2, kin9 find vf
+	    }
+
+	if else !(containsKey("a")) {//kin1, kin8, kin11 find a
+	    }
+
+	if else !(containsKey("t")) {//kin4, kin7
+	    }
     }
 
     //===============a = (vf - vi)/t DERIVED===============
@@ -52,27 +66,32 @@ public class KinCalculator extends Kinematics {
     public double kin7() {
 	return Math.sqrt(2*d/a);
     }
+
+    //a = (2(d - vit))/t^2
+    public double kin8() {
+	return (2*(d - vi*t)) / Math.pow(vi,2);
+    }
     //================================================
 
     //============vf^2 = vi^2 + 2ad DERIVED=========
 
     //vf = sqrt(vi^2 +2ad) >> if vi, a, d are known
-    public double kin8() {
+    public double kin9() {
 	return Math.sqrt(Math.pow(vi,2) + 2*a*d);
     }
 
     //vi = sqrt(vf^2 - 2ad) >> if vf, a, d are known
-    public double kin9() {
+    public double kin10() {
 	return Math.sqrt(Math.pow(vf,2) - 2*a*d);
     }
 
     //a = (vf^2 - vi^2) / 2d >> if vf, vi, d are known
-    public double kin10() {
+    public double kin11() {
 	return (Math.pow(vf,2) - Math.pow(vi,2)) / (2*d);
     }
 
     //d = (vf^2 - vi^2) / 2a >> if vf, vi, a are known
-    public double kin11() {
+    public double kin12() {
 	return (Math.pow(vf,2) - Math.pow(vi,2)) / (2*a);
     }
     //================================================

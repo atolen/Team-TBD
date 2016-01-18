@@ -45,7 +45,8 @@ Lots of gruntwork to follow.
 
 More hardcoding KinCalc.
 Issue regarding solving for t in one equation resolved.
-Finished KinCalc. Must still be tested.(But it compiles!)
+Done with fxns in KinCalc. Must still be tested, and put together into calculate.
+(But it compiles!)
 -G
 
 ===============================================================================
