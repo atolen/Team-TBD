@@ -5,7 +5,7 @@ public abstract class Question {
     protected float userInput; // user's answer to question
     protected float rightAns; // correct answer to question
     protected ArrayList<String> varList = new ArrayList(); // list of vars
-    protected Map<String,Comparable> vars = new HashMap(); // dict of vars
+    protected Map<String,Number> vars = new HashMap(); // dict of vars
 
     //manually populates Map "vars" w/ class-specific instance vars
     public abstract void populate();

@@ -1,9 +1,9 @@
 public class Kinematics extends Question {
-    private double d; // displacement
-    private double vi; // init velocity
-    private double vf; // final velocity
-    private double a; // acceleration
-    private double t; // time
+    private Number d; // displacement
+    private Number vi; // init velocity
+    private Number vf; // final velocity
+    private Number a; // acceleration
+    private Number t; // time
 
     public String toString() {
 	return vars.toString();
