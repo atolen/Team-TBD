@@ -1,9 +1,14 @@
-public class Kinematics extends Question {
-    Comparable d; // displacement
-    Comparable vi; // init velocity
-    Comparable vf; // final velocity
-    Comparable a; // acceleration
-    Comparable t; // time
+ppublic class Kinematics extends Question {
+    private Comparable d; // displacement
+    private Comparable vi; // init velocity
+    private Comparable vf; // final velocity
+    private Comparable a; // acceleration
+    private Comparable t; // time
+
+    // constructors
+    public Kinematics() {
+	
+    }
 
     
 } // close class Kinematics

@@ -1,10 +1,10 @@
 import java.util.*;
 public class Question {
     
-    int numVars; // number of variables in a family of formulae
-    float userInput; // user's answer to question
-    float rightAns; // correct answer to question
-    ArrayList vars; // list of vars
+    protected int numVars; // number of variables in a family of formulae
+    protected float userInput; // user's answer to question
+    protected float rightAns; // correct answer to question
+    protected ArrayList vars; // list of vars
     
     
     //precond: lo < hi
