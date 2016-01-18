@@ -1,5 +1,10 @@
 public class KinCalculator extends Kinematics {
-
+    double d = vars.get("d").doubleValue();
+    double vi = vars.get("vi").doubleValue();
+    double vf = vars.get("vf").doubleValue();
+    double a = vars.get("a").doubleValue();
+    double t = vars.get("t").doubleValue();
+    
     //finds rightAns
     public double KinCalculator() {
 	return 0.0;
@@ -12,22 +17,22 @@ public class KinCalculator extends Kinematics {
 
     //a = (vf - vi)/t >> if vf, vi, t are known
     public double kin1() {
-	return (vars.get("vf").doubleValue() - vars.get("vi").doubleValue() / vars.get("t").doubleValue());
+	return (vf - vi / t);
     }
 
     //vf = vi + at  >> if vi, a, t are known
     public double kin2() {
-	return vars.get("vf").doubleValue() + vars.get("a").doubleValue()*vars.get("t").doubleValue();
+	return vf + a*t;
     }
 
     //vi = at - vf >> if a, t, vf are known
     public double kin3() {
-	return vars.get("a").doubleValue()*vars.get("t").doubleValue() - vars.get("vf").doubleValue();
+	return a*t - vf;
     }
 
     //t = (vf - vi)/a >> if vf, vi, a are known
     public double kin4() {
-	return (vars.get("vf").doubleValue() - vars.get("vi").doubleValue()) / vars.get("a").doubleValue();
+	return (vf - vi) / a;
     }
     //=================================================
 
@@ -35,11 +40,12 @@ public class KinCalculator extends Kinematics {
 
     //d = vit + (0.5)at^2 >> if vi, t, a are known
     public double kin5() {
-	return vars.get("vi").doubleValue()*vars.get("t").doubleValue() + (0.5)*vars.get("a").doubleValue()*Math.pow(vars.get("t").doubleValue(), 2);
+	return vi*t + (0.5)*a*Math.pow(t, 2);
     }
 
+    //vi = (d - (0.5)at^2)/t >> if d, a, t are known
     public double kin6() {
-	return vars.get("d").doubleValue() - 0.5*vars.get("a").doubleValue()*Math.pow((vars.get("t").doubleValue()),2) / vars.get("t").doubleValue();
+	return d - 0.5*a*Math.pow((t),2) / t;
     }
     //================================================
     
