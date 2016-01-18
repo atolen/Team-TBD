@@ -3,7 +3,7 @@
 ==========
 
 2016-01-13
-14:50
+15:00
 
 Mapped out structure of the physics half.
 Looking into Gaussian elimination and other algorithms that could potentially help us.
@@ -15,7 +15,18 @@ Looking into Gaussian elimination and other algorithms that could potentially he
 19:00
 
 Rejected Gaussian elimination. Calculator fxn will have to be bruteforced.
-Created class Question & subclasses.
+Created class Question.
+-G&A
+
+===============================================================================
+
+2016-01-17
+23:00
+
+Question --> Kinematics --> KinCalculator
+Created subclass & granddaughter-class.
+All physics classes henceforth will be based upon these.
+Kinks worked out. Feelin' productive. B-)
 -G&A
 
 ===============================================================================
