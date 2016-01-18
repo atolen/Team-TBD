@@ -45,8 +45,6 @@ public abstract class Question {
 	vars.put(varList.get(0),null);
     } 
     
-    
-    
 } // close class Question
     
 
