@@ -1,7 +1,9 @@
-1. write working Calculate() method -- 1/14
-2. write Question subclasses -- 1/16
-3. make everything work! -- 1/17
-4. write RPG classes -- 1/19
+1. write working Calculate() method -- 1/18
+2. write all Question subclasses -- 1/19
+3. make everything work! -- 1/20
+4. write RPG classes -- 1/23
+
+
 
 
 
