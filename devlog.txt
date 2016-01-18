@@ -8,6 +8,3 @@ IN CLASS
 Mapped out structure of the physics half.
 Looking into Gaussian elimination and other algorithms that could potentially help us.
 -G&A
-
-==========================================================================================
-
