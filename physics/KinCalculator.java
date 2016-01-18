@@ -47,6 +47,11 @@ public class KinCalculator extends Kinematics {
     public double kin6() {
 	return d - 0.5*a*Math.pow((t),2) / t;
     }
+
+    //t = sqrt(2d/a) >>if d, a are known, vi == 0
+    public double kin7() {
+	return Math.sqrt(2*d/a);
+    }
     //================================================
     
     
