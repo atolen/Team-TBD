@@ -1,11 +1,13 @@
 import java.util.*;
-public class Question {
+public abstract class Question {
     
     protected int numVars; // number of variables in a family of formulae
     protected float userInput; // user's answer to question
     protected float rightAns; // correct answer to question
     protected ArrayList vars; // list of vars
-    
+
+    //manually populates AL "vars" w/ class-specific instance vars
+    public abstract void populate();
     
     //precond: lo < hi
     //postcond: returns random int within specified range
@@ -19,7 +21,8 @@ public class Question {
 	//     offset + rand int on interval [lo,hi]
         return (lo + ( (hi-lo+1) * Math.random() )) * Math.pow(10,pow);
     }
-
+    
+    
     //randomly rearrang elements of an ArrayList
     public static void shuffle( ArrayList al) {
 	int randomIndex;
