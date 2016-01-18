@@ -23,8 +23,8 @@ public abstract class Question {
     }
     
     
-    //randomly rearrang elements of an ArrayList
-    public static void shuffle( ArrayList al) {
+    //shuffle elements of an ArrayList
+    public static void shuffle( ArrayList al ) {
 	int randomIndex;
 	for( int i = al.size()-1; i > 0; i--) {
 	    //pick an index at random
