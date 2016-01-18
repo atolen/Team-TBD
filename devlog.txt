@@ -45,6 +45,7 @@ Lots of gruntwork to follow.
 
 More hardcoding KinCalc.
 Issue regarding solving for t in one equation resolved.
+Finished KinCalc. Must still be tested.(But it compiles!)
 -G
 
 ===============================================================================

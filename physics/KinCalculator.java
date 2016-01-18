@@ -48,11 +48,33 @@ public class KinCalculator extends Kinematics {
 	return d - 0.5*a*Math.pow((t),2) / t;
     }
 
-    //t = sqrt(2d/a) >>if d, a are known, vi == 0
+    //t = sqrt(2d/a) >> if d, a are known, vi == 0
     public double kin7() {
 	return Math.sqrt(2*d/a);
     }
     //================================================
-    
-    
+
+    //============vf^2 = vi^2 + 2ad DERIVED=========
+
+    //vf = sqrt(vi^2 +2ad) >> if vi, a, d are known
+    public double kin8() {
+	return Math.sqrt(Math.pow(vi,2) + 2*a*d);
+    }
+
+    //vi = sqrt(vf^2 - 2ad) >> if vf, a, d are known
+    public double kin9() {
+	return Math.sqrt(Math.pow(vf,2) - 2*a*d);
+    }
+
+    //a = (vf^2 - vi^2) / 2d >> if vf, vi, d are known
+    public double kin10() {
+	return (Math.pow(vf,2) - Math.pow(vi,2)) / (2*d);
+    }
+
+    //d = (vf^2 - vi^2) / 2a >> if vf, vi, a are known
+    public double kin11() {
+	return (Math.pow(vf,2) - Math.pow(vi,2)) / (2*a);
+    }
+    //================================================
+
 }//end of class KinCalculator
