@@ -30,3 +30,12 @@ Kinks worked out. Feelin' productive. B-)
 -G&A
 
 ===============================================================================
+
+2016-01-18
+09:00
+
+Kinematics-specific calculator being written. Has to be bruteforced :-(
+Lots of gruntwork to follow.
+-A
+
+===============================================================================
