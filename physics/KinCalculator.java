@@ -31,12 +31,17 @@ public class KinCalculator extends Kinematics {
     }
     //=================================================
 
-    //============d = vit + (1/2)at^2 DERIVED=========
+    //============d = vit + (0.5)at^2 DERIVED=========
 
-    //d = vit + (1/2)at^2 >> if vi, t, a are known
+    //d = vit + (0.5)at^2 >> if vi, t, a are known
     public double kin5() {
-	return vars.get("vi").doubleValue()*vars.get("t").doubleValue() + (1/2)*vars.get("a").doubleValue()*Math.pow(vars.get("t").doubleValue(), 2);
+	return vars.get("vi").doubleValue()*vars.get("t").doubleValue() + (0.5)*vars.get("a").doubleValue()*Math.pow(vars.get("t").doubleValue(), 2);
+    }
+
+    public double kin6() {
+	return vars.get("d").doubleValue() - 0.5*vars.get("a").doubleValue()*Math.pow((vars.get("t").doubleValue()),2) / vars.get("t").doubleValue();
     }
     //================================================
+    
     
 }//end of class KinCalculator
