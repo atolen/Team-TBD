@@ -6,24 +6,24 @@ public class KinCalculator extends Kinematics {
     double t = vars.get("t").doubleValue();
     
     //finds rightAns
-    public double KinCalculator() {
+    public double calculate() {
 	return 0.0;
     }
 
     public void whichFxn() {
-	if !(containsKey("d")) {//kin5, kin12 find d
+	if !(vars.containsKey("d")) {//kin5, kin12 find d
 	    }
 
-	if else !(containsKey("vi")) {//kin3, kin6, kin10 find vi
+	if else !(vars.containsKey("vi")) {//kin3, kin6, kin10 find vi
 	    }
 
-	if else !(containsKey("vf")) {//kin2, kin9 find vf
+	if else !(vars.containsKey("vf")) {//kin2, kin9 find vf
 	    }
 
-	if else !(containsKey("a")) {//kin1, kin8, kin11 find a
+	if else !(vars.containsKey("a")) {//kin1, kin8, kin11 find a
 	    }
 
-	if else !(containsKey("t")) {//kin4, kin7
+	if else !(vars.containsKey("t")) {//kin4, kin7 find t
 	    }
     }
 
@@ -95,5 +95,8 @@ public class KinCalculator extends Kinematics {
 	return (Math.pow(vf,2) - Math.pow(vi,2)) / (2*a);
     }
     //================================================
+
+    public static void main( String[] args ) {
+    }
 
 }//end of class KinCalculator
