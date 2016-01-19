@@ -42,9 +42,29 @@ public class Kinematics extends Question {
 
     public void whichFxn() {
 	if( !(vars.containsKey("d")) ) {//kin5, kin12 find d
+	    if (vars.containsKey("vi") && vars.containsKey("a")) {
+		if (vars.containsKey("t")) {//kin5
+		    kin5();
+		}
+		if (vars.containsKey("vf")) {
+		    kin12();
+		}
 	}
 
 	else if( !(vars.containsKey("vi")) ) {//kin3, kin6, kin10 find vi
+	    if(vars.containsKey("a")) {
+		if(vars.containsKey("t")) {
+		    if(vars.containsKey("vf")) { 
+	       		kin3();
+		    }
+		    else if(vars.containsKey("d")) {
+			kin6();
+		    }
+		}
+		else if(vars.containsKey("vf") && containsKey("d")) {
+		    kin10();
+		}
+	    }	    
 	}
        
 	else if( !(vars.containsKey("vf")) ) {//kin2, kin9 find vf
