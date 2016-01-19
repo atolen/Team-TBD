@@ -54,8 +54,11 @@ Done with fxns in KinCalc. Must still be tested, and put together into calculate
 2016-01-19
 11:00
 
+KinCalculator merged with Kinematics. Kinematics cleaned up.
 All kinematic fxns tested, all bugs fixed. No more NPEs!!! 
 Calculate() about to be written.
 -A
+
+P.S. Learned that I can't use exclamation points in git commit msgs.
 
 ===============================================================================
