@@ -59,6 +59,4 @@ All kinematic fxns tested, all bugs fixed. No more NPEs!!!
 Calculate() about to be written.
 -A
 
-P.S. Learned that I can't use exclamation points in git commit msgs.
-
 ===============================================================================
