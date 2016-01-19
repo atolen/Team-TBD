@@ -5,7 +5,7 @@ public abstract class Question {
     protected float userInput; // user's answer to question
     protected float rightAns; // correct answer to question
     protected ArrayList<String> varList = new ArrayList(); // list of vars
-    protected Map<String,Number> vars = new HashMap(); // dict of vars
+    protected Map<String,Double> vars = new HashMap(); // dict of vars
 
     //manually populates Map "vars" w/ class-specific instance vars
     public abstract void populate();
@@ -18,10 +18,10 @@ public abstract class Question {
     }
 
     // overloaded randomNum() -- scientific notation (sort of)
-    public static Number randomNum( int lo, int hi, int pow ) {
+    public static Double randomNum( int lo, int hi, int pow ) {
 	//     offset + rand int on interval [lo,hi]
 	double rand = (lo + ( (hi-lo+1) * Math.random() )) * Math.pow(10,pow);
-	Number retNum = new Double(rand);
+	Double retNum = new Double(rand);
         return retNum;
     }
     
@@ -44,7 +44,7 @@ public abstract class Question {
 	for ( int i = 1; i < varList.size(); i++ ) {
 	    vars.put(varList.get(i), randomNum(lo,hi,pow));
 	}
-	vars.put(varList.get(0),null);
+	vars.put(varList.get(0), null);
     } 
     
 } // close class Question
