@@ -46,7 +46,13 @@ public abstract class Question {
 	}
 	vars.put(varList.get(0), null);
     } 
-    
+
+    public static void main( String[] args ) {
+	for( String num : args ) {
+	    Double dub = Double.parseDouble(num);
+	    System.out.println(dub);
+	}
+    }
 } // close class Question
     
 
