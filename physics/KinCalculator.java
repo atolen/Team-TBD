@@ -11,20 +11,20 @@ public class KinCalculator extends Kinematics {
     }
 
     public void whichFxn() {
-	if !(vars.containsKey("d")) {//kin5, kin12 find d
+	if( !(vars.containsKey("d")) ) {//kin5, kin12 find d
 	    }
 
-	if else !(vars.containsKey("vi")) {//kin3, kin6, kin10 find vi
+	else if( !(vars.containsKey("vi")) ) {//kin3, kin6, kin10 find vi
+	    }
+       
+	else if( !(vars.containsKey("vf")) ) {//kin2, kin9 find vf
 	    }
 
-	if else !(vars.containsKey("vf")) {//kin2, kin9 find vf
+	else if( !(vars.containsKey("a")) ){//kin1, kin8, kin11 find a
 	    }
 
-	if else !(vars.containsKey("a")) {//kin1, kin8, kin11 find a
-	    }
-
-	if else !(vars.containsKey("t")) {//kin4, kin7 find t
-	    }
+	else if( !(vars.containsKey("t")) ){//kin4, kin7 find t
+	}
     }
 
     //===============a = (vf - vi)/t DERIVED===============
@@ -36,7 +36,7 @@ public class KinCalculator extends Kinematics {
 
     //vf = vi + at  >> if vi, a, t are known
     public double kin2() {
-	return vf + a*t;
+	return vi + a*t;
     }
 
     //vi = at - vf >> if a, t, vf are known
@@ -97,6 +97,9 @@ public class KinCalculator extends Kinematics {
     //================================================
 
     public static void main( String[] args ) {
+	Kinematics q = new KinCalculator();
+	System.out.println(q);
+	//q.kin1();
     }
 
 }//end of class KinCalculator

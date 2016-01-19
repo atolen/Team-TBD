@@ -18,9 +18,11 @@ public abstract class Question {
     }
 
     // overloaded randomNum() -- scientific notation (sort of)
-    public static double randomNum( int lo, int hi, int pow ) {
+    public static Number randomNum( int lo, int hi, int pow ) {
 	//     offset + rand int on interval [lo,hi]
-        return (lo + ( (hi-lo+1) * Math.random() )) * Math.pow(10,pow);
+	double rand = (lo + ( (hi-lo+1) * Math.random() )) * Math.pow(10,pow);
+	Number retNum = new Double(rand);
+        return retNum;
     }
     
     
@@ -35,9 +37,9 @@ public abstract class Question {
 	}
     }
 
-    //chooseVar() -- assigns random values to all but one varible
+    //assignVals() -- assigns random values to all but one varible
     //               populates HashMap
-    public void chooseVar( int lo, int hi, int pow ) {
+    public void assignVals( int lo, int hi, int pow ) {
 	shuffle();
 	for ( int i = 1; i < varList.size(); i++ ) {
 	    vars.put(varList.get(i), randomNum(lo,hi,pow));
