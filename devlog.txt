@@ -80,6 +80,7 @@ Edits made to Calculate()
 
 Continued writing Calculate()
 Bug fixes
+Began class Character
 -G
 
 ==============================================================================
