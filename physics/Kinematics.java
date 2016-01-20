@@ -54,13 +54,13 @@ public class Kinematics extends Question {
 	}
 
 	//===============================================================
-	else if( d == null && !(vi == null) 
+	else if( d == null && !(vi == null)) 
 	if( (vars.get("d") == null) ) {//kin5, kin12 find d
 	    //	    if (vars.containsKey("vi") && vars.containsKey("a")) {
-	    if!(vars.get("t") == null) {//kin5
+	    if(!(vars.get("t") == null)) {//kin5
 		    vars.put("d",kin5());
 		}
-	    else if!(vars.get("vf") == null) {//kin12
+	    else if(!(vars.get("vf") == null)) {//kin12
 		    vars.put("d",kin12());
 		}
 	}
