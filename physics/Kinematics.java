@@ -36,38 +36,56 @@ public class Kinematics extends Question {
     //========================CALCULATOR========================
 
     //finds rightAns
-    public double calculate() {
-	return 0.0;
+    public String calculate() {
+	String retStr = "";
+	while( vars.containsValue(null)) {
+		retStr += whichFxn() + "\n";
+	}
+	return retStr;
     }
 
     public void whichFxn() {
-	if( !(vars.containsKey("d")) ) {//kin5, kin12 find d
-	    if (vars.containsKey("vi") && vars.containsKey("a")) {
-		if (vars.containsKey("t")) {//kin5
-		    kin5();
+	if( d == null && !(vi == null) && !(a == null) ) { //kin5,kin12 find d
+	    if( !(t == null) )
+		unknowns.put("d",kin5());
+	    else
+		unknows.put("d",kin12());
+	    return;
+	}
+
+	//===============================================================
+	else if( d == null && !(vi == null) 
+	if( (vars.get("d") == null) ) {//kin5, kin12 find d
+	    //	    if (vars.containsKey("vi") && vars.containsKey("a")) {
+	    if!(vars.get("t") == null) {//kin5
+		    vars.put("d",kin5());
 		}
-		if (vars.containsKey("vf")) {
-		    kin12();
+	    else if!(vars.get("vf") == null) {//kin12
+		    vars.put("d",kin12());
 		}
 	}
 
-	else if( !(vars.containsKey("vi")) ) {//kin3, kin6, kin10 find vi
-	    if(vars.containsKey("a")) {
-		if(vars.containsKey("t")) {
-		    if(vars.containsKey("vf")) { 
-	       		kin3();
-		    }
-		    else if(vars.containsKey("d")) {
-			kin6();
-		    }
+	else if( vars.get("vi") == null ) {//kin3, kin6, kin10 find vi
+	    // if(vars.containsKey("a")) {
+	    if(vars.containsKey("t")) {
+		if(vars.containsKey("vf")) {//kin3 
+		    return kin3();
 		}
-		else if(vars.containsKey("vf") && containsKey("d")) {
-		    kin10();
+		else if(vars.containsKey("d")) {//kin6
+		    return kin6();
 		}
-	    }	    
-	}
+	    }
+	    else if(vars.containsKey("vf") && containsKey("d")) {//kin10
+		return kin10();
+	    }
+	}	    
+	
        
 	else if( !(vars.containsKey("vf")) ) {//kin2, kin9 find vf
+	    if( vars.containsKey("t") && !vars.containsKey("d"))
+		return kin2();
+	    else
+		return kin9();
 	}
 
 	else if( !(vars.containsKey("a")) ){//kin1, kin8, kin11 find a
@@ -117,7 +135,7 @@ public class Kinematics extends Question {
 	return Math.sqrt((2*d)/a);
     }
 
-    //a = (2(d - vit))/t^2
+    //a = (2(d - vit))/t^2 >> if d, vi, t are known
     public double kin8() {
 	return (2*(d - vi*t)) / Math.pow(vi,2);
     }
@@ -147,7 +165,7 @@ public class Kinematics extends Question {
     //================================================
 
 
-    public static void main(String[] args) {
+    public static void main( String[] args ) {
 	Kinematics luke = new Kinematics();
 	System.out.println(luke);
     }

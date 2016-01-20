@@ -56,15 +56,22 @@ Done with fxns in KinCalc. Must still be tested, and put together into calculate
 
 KinCalculator removed, all methods moved to Kinematics. Kinematics cleaned up.
 All kinematic fxns tested, all bugs fixed. No more NPEs!!! 
-Calculate() about to be written.
+Calculate() to be started.
 -A
 
 ===============================================================================
 
 2016-01-19
-14:00
+15:00
 
 Began writing Calculate()
 -G
+
+===============================================================================
+
+2016-01-20
+12:00
+
+Edits made to Calculate()
 
 ===============================================================================
