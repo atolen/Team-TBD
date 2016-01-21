@@ -31,67 +31,64 @@ public class Kinematics extends Question {
 	assignVals(0,10,0);
     }
 
-
     
     //========================CALCULATOR========================
 
     //finds rightAns
     public String calculate() {
-	String retStr = "";
 	while( vars.containsValue(null)) {
-		retStr += whichFxn() + "\n";
+	    whichFxn();
 	}
-	return retStr;
+	return unknowns.toString();
     }
 
     public void whichFxn() {
-	if( d == null && !(vi == null) && !(a == null) ) { //kin5,kin12 find d
-	    if( !(t == null) )
-		unknowns.put("d",kin5());
+	if( d == null && !(vi == null) && a != null ) { //kin5,kin12 find d
+	    if( t != null )
+		unknowns.put("d",kin5()); //kin5
 	    else
-		unknows.put("d",kin12());
+		unknows.put("d",kin12()); //kin12
 	    return;
 	}
 
-	//===============================================================
-	else if( d == null && !(vi == null) 
-	if( (vars.get("d") == null) ) {//kin5, kin12 find d
-	    //	    if (vars.containsKey("vi") && vars.containsKey("a")) {
-	    if!(vars.get("t") == null) {//kin5
-		    vars.put("d",kin5());
-		}
-	    else if!(vars.get("vf") == null) {//kin12
-		    vars.put("d",kin12());
-		}
+	else if( vi == null ) {
+	    if( t != null ) {
+		if( vf != null )
+		    unknowns.put("vi",kin3()); //kin3
+		else
+		    unknowns.put("vi",kin6()); //kin6  
+	    }
+	    else 
+		unknowns.put("vi",kin10()); //kin10
+	    return;
 	}
 
-	else if( vars.get("vi") == null ) {//kin3, kin6, kin10 find vi
-	    // if(vars.containsKey("a")) {
-	    if(vars.containsKey("t")) {
-		if(vars.containsKey("vf")) {//kin3 
-		    return kin3();
-		}
-		else if(vars.containsKey("d")) {//kin6
-		    return kin6();
-		}
-	    }
-	    else if(vars.containsKey("vf") && containsKey("d")) {//kin10
-		return kin10();
-	    }
-	}	    
-	
-       
-	else if( !(vars.containsKey("vf")) ) {//kin2, kin9 find vf
-	    if( vars.containsKey("t") && !vars.containsKey("d"))
-		return kin2();
+	else if( vf == null ) {
+	    if( t != null )
+		unknowns.put("vf",kin2());
 	    else
-		return kin9();
+		unknowns.put("vf",kin9());
+	    return;
 	}
 
-	else if( !(vars.containsKey("a")) ){//kin1, kin8, kin11 find a
+	else if( a == null ) {
+	    if( vi != null && t != null ) {
+		if( d == null )
+		    unknowns.put("a",kin1());
+		else
+		    unknowns.put("a",kin8());
+	    }
+	    else
+		unknowns.put("a",kin11());
+	    return;
 	}
 
-	else if( !(vars.containsKey("t")) ){//kin4, kin7 find t
+	else { // t unknown
+	    if( vf != null )
+		unknowns.put("t",kin4());
+	    else
+		unknowns.put("t",kin7());
+	    return;
 	}
     }
 
