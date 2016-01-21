@@ -46,14 +46,23 @@ public abstract class Question {
 	    vars.put(varList.get(i), randomNum(lo,hi,pow));
 	}
 	vars.put(varList.get(0), null);
+    }
+    
+    //assignVals() -- assigns random values to all but one varible
+    //               populates HashMap
+    public void assignVals( int lo, int hi, int pow, int diff ) {
+	shuffle();
+	for ( int i = diff; i < varList.size(); i++ ) {
+	    vars.put(varList.get(i), randomNum(lo,hi,pow));
+	}
     } 
 
-    public static void main( String[] args ) {
-	for( String num : args ) {
+    //  public static void main( String[] args ) {
+	/*	for( String num : args ) {
 	    Double dub = Double.parseDouble(num);
 	    System.out.println(dub);
-	}
-    }
+	    } */
+    //    }
 } // close class Question
     
 

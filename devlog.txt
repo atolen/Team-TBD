@@ -72,7 +72,8 @@ Began writing Calculate()
 2016-01-20
 12:00
 
-Edits made to Calculate()
+Edits made to Calculate(), bug fixes.
+-A
 
 ===============================================================================
 2016-01-20
@@ -82,5 +83,14 @@ Continued writing Calculate()
 Bug fixes
 Began class Character
 -G
+
+==============================================================================
+
+2016-01-20
+21:00
+
+Finished Calculate()! It's in it's simplest form, but everything works.
+Began writing method to compare user input to machine-generated correct answers.
+-A
 
 ==============================================================================

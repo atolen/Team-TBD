@@ -36,58 +36,81 @@ public class Kinematics extends Question {
 
     //finds rightAns
     public String calculate() {
-	while( vars.containsValue(null)) {
+       	while( vars.containsValue(null)) 
 	    whichFxn();
-	}
 	return unknowns.toString();
     }
 
     public void whichFxn() {
 	if( d == null && !(vi == null) && a != null ) { //kin5,kin12 find d
-	    if( t != null )
+	    if( t != null ) {
 		unknowns.put("d",kin5()); //kin5
-	    else
-		unknows.put("d",kin12()); //kin12
+		vars.put("d",kin5());
+	    }
+	    else {
+		unknowns.put("d",kin12()); //kin12
+		vars.put("d",kin12());
+	    }
 	    return;
 	}
 
 	else if( vi == null ) {
 	    if( t != null ) {
-		if( vf != null )
+		if( vf != null ) {
 		    unknowns.put("vi",kin3()); //kin3
-		else
-		    unknowns.put("vi",kin6()); //kin6  
+		    vars.put("vi",kin3());
+		}
+		else {
+		    unknowns.put("vi",kin6()); //kin6
+		    vars.put("vi",kin6());
+		}
 	    }
-	    else 
+	    else {
 		unknowns.put("vi",kin10()); //kin10
+		vars.put("vi",kin10());
+	    }
 	    return;
 	}
 
 	else if( vf == null ) {
-	    if( t != null )
+	    if( t != null ) {
 		unknowns.put("vf",kin2());
-	    else
+		vars.put("vf",kin2());
+	    }
+	    else {
 		unknowns.put("vf",kin9());
+		vars.put("vf",kin9());
+	    }
 	    return;
 	}
 
 	else if( a == null ) {
 	    if( vi != null && t != null ) {
-		if( d == null )
+		if( d == null ) {
 		    unknowns.put("a",kin1());
-		else
+		    vars.put("a",kin1());
+		}
+		else {
 		    unknowns.put("a",kin8());
+		    vars.put("a",kin8());
+		}
 	    }
-	    else
+	    else {
 		unknowns.put("a",kin11());
+		vars.put("a",kin11());
+	    }
 	    return;
 	}
-
+	    
 	else { // t unknown
-	    if( vf != null )
+	    if( vf != null ) {
 		unknowns.put("t",kin4());
-	    else
+		vars.put("t",kin4());
+	    }
+	    else {
 		unknowns.put("t",kin7());
+		vars.put("t",kin7());
+	    }
 	    return;
 	}
     }
@@ -165,6 +188,7 @@ public class Kinematics extends Question {
     public static void main( String[] args ) {
 	Kinematics luke = new Kinematics();
 	System.out.println(luke);
+	System.out.println(luke.calculate());
     }
     
 } // close class Kinematics
