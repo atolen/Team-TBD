@@ -2,7 +2,6 @@ import java.util.*;
 public abstract class Question {
     
     protected int numVars; // number of variables in a family of formulae
-    protected float rightAns; // correct answer to question
     protected ArrayList<String> varList = new ArrayList(); // list of vars
     protected Map<String,Double> vars = new HashMap(); // dict of vars
     protected Map<String,Double> unknowns = new HashMap(); // stores unknows + correct answers, to later compare w/ user input
@@ -55,7 +54,7 @@ public abstract class Question {
 	for ( int i = difficulty; i < varList.size(); i++ ) {
 	    vars.put(varList.get(i), randomNum(lo,hi,pow));
 	}
-	this.addKeys();
+	addKeys();
     }
 
     //addKeys() -- copies keys from unknowns into userInput (both HashMaps)
@@ -74,12 +73,6 @@ public abstract class Question {
 	return (unknowns.get(key) * 1.15 >= userInput.get(key) && unknowns.get(key) * 0.85 <= userInput.get(key));
     }
 
-    //  public static void main( String[] args ) {
-	/*	for( String num : args ) {
-	    Double dub = Double.parseDouble(num);
-	    System.out.println(dub);
-	    } */
-    //    }
 } // close class Question
     
 

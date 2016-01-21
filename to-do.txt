@@ -1,4 +1,3 @@
-- write user input part & comparison -- Driver? -- 1/21
 - write all Question subclasses -- 1/22
 - ensure that physics works -- 1/23
 - finish rpg classes -- 1/24
