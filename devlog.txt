@@ -94,3 +94,11 @@ Began writing method to compare user input to machine-generated correct answers.
 -A
 
 ==============================================================================
+
+2016-01-21
+15:00
+
+compare() written, began working on user interface-y things. Progress is being made!
+-G&A
+
+==============================================================================
