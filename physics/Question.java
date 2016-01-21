@@ -69,6 +69,11 @@ public abstract class Question {
 	}
     }
 
+    //compare() -- returns true if user input within 15% of computer-generated answer
+    public boolean compare(String key) {
+	return (unknowns.get(key) * 1.15 >= userInput.get(key) && unknowns.get(key) * 0.85 <= userInput.get(key));
+    }
+
     //  public static void main( String[] args ) {
 	/*	for( String num : args ) {
 	    Double dub = Double.parseDouble(num);
