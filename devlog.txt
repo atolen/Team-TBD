@@ -75,3 +75,12 @@ Began writing Calculate()
 Edits made to Calculate()
 
 ===============================================================================
+2016-01-20
+15:00
+
+Continued writing Calculate()
+Bug fixes
+Began class Character
+-G
+
+==============================================================================

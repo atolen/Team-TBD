@@ -51,6 +51,7 @@ public class Kinematics extends Question {
 	    return;
 	}
 
+<<<<<<< HEAD
 	else if( vi == null ) {
 	    if( t != null ) {
 		if( vf != null )
@@ -61,6 +62,18 @@ public class Kinematics extends Question {
 	    else 
 		unknowns.put("vi",kin10()); //kin10
 	    return;
+=======
+	//===============================================================
+	else if( d == null && !(vi == null)) 
+	if( (vars.get("d") == null) ) {//kin5, kin12 find d
+	    //	    if (vars.containsKey("vi") && vars.containsKey("a")) {
+	    if(!(vars.get("t") == null)) {//kin5
+		    vars.put("d",kin5());
+		}
+	    else if(!(vars.get("vf") == null)) {//kin12
+		    vars.put("d",kin12());
+		}
+>>>>>>> 12a8d4781ee9ac2d8f1ceca025ea1118c9f624bb
 	}
 
 	else if( vf == null ) {
