@@ -18,7 +18,6 @@ public class Kinematics extends Question {
 	vf = vars.get("vf");
 	a = vars.get("a");
 	t = vars.get("t");
-	
     }
 
     //populate()
@@ -136,7 +135,6 @@ public class Kinematics extends Question {
     public double kin4() {
 	return (vf - vi) / a;
     }
-    //=================================================
 
     //============d = vit + (0.5)at^2 DERIVED=========
 
