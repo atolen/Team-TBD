@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Driver {
+public class Game {
 
     //Instance Vars
 
@@ -19,7 +19,7 @@ public class Driver {
     private InputStreamReader isr;
     private BufferedReader in;
 
-    public Driver() {
+    public Game() {
 	gameOver = false;
 	isr = new InputStreamReader( System.in );
 	in = new BufferedReader( isr );
@@ -28,7 +28,7 @@ public class Driver {
 
     //====================================================
 
-    public void newGame() {
+    public static void newGame() {
 
 	String prt = "";
 	String name = "";
@@ -54,7 +54,8 @@ public class Driver {
     //====================================================
 
     public static void main(String[] args){
-	Driver galaxy = new Driver();
+	//	Driver galaxy = new Driver();
+	newGame();
     }//end of main
 
 }//end of Driver
