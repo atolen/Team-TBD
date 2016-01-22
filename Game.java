@@ -89,7 +89,34 @@ public class Game {
     prt = 
 "             the      evil      Galactic      Empire.";
 	System.out.print(prt);
-	System.out.print("\n");
+	System.out.print("\n\n");
+	pause(2000);
+
+prt =
+"            During     the        battle,      Rebel" +
+"\n";
+    System.out.print(prt);
+    pause(1500);
+    prt =
+"           spies     managed     to    steal    secret" +
+"\n";
+    System.out.print(prt);
+    pause(1500);
+    prt = 
+"          plans         to         the         Empire's" +
+"\n";
+    System.out.print(prt);
+    pause(1500);
+    prt = 
+"         ultimate        weapon,        the        DEATH" +
+"\n";
+    System.out.print(prt);
+    pause(1500);
+    prt = 
+"        STAR  ,        an          armored          space" +
+"\n";
+    System.out.print(prt);
+    pause(1500);
 	//================END OF INTRO================
     }//end of newGame()
     //====================================================
