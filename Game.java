@@ -32,7 +32,7 @@ public class Game {
 
 	String prt = "";
 	String name = "";
-
+	//==============INTRODUCTION=====================
 	prt = "\n";
 	System.out.print( prt );
 
@@ -61,6 +61,36 @@ public class Game {
 
     pause(1000);
 
+    prt =
+"                          A NEW HOPE" +
+"\n\n";
+    System.out.print(prt);
+    pause(2000);
+    prt = 
+"                  It is a period of civil war" +
+"\n";
+    System.out.print(prt);
+    pause(1500);
+    prt = 
+"                 Rebel   spaceships,  striking" +
+"\n";
+    System.out.print(prt);
+    pause(1500);
+    prt = 
+"               from  a  hidden  base,  have   won" +
+"\n";
+    System.out.print(prt);
+    pause(1500);
+    prt = 
+"              their    first    victory    against" +
+"\n";
+    System.out.print(prt);
+    pause(1500);
+    prt = 
+"             the      evil      Galactic      Empire.";
+	System.out.print(prt);
+	System.out.print("\n");
+	//================END OF INTRO================
     }//end of newGame()
     //====================================================
 
