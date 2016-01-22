@@ -33,9 +33,17 @@ public class Driver {
 	String prt = "";
 	String name = "";
 
-	prt = "\n\t\tA long time ago in a galaxy far,\n\t\tfar away...";
-	prt += "\n\n";
-	prt +=
+	prt = "\n";
+	System.out.print( prt );
+
+	pause(1000);
+
+	prt = "\t\tA long time ago in a galaxy far,\n\t\tfar away...\n\n";
+	System.out.print( prt );
+
+	pause(3000);
+
+	prt =
 "\n                    8888888888  888    88888" +
 "\n                   88     88   88 88   88  88" +
 "\n                    8888  88  88   88  88888" +
@@ -50,8 +58,19 @@ public class Driver {
 	prt += "\n\n\n";
 
     System.out.print( prt );
+
+    pause(1000);
+
     }//end of newGame()
     //====================================================
+
+    public static void pause(int time) {
+	try {
+	    Thread.sleep(time);//1000 milliseconds
+	} catch(InterruptedException ex) {
+	    Thread.currentThread().interrupt();
+	}
+    }//end of pause()
 
     public static void main(String[] args){
 	Driver galaxy = new Driver();
