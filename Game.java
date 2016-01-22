@@ -70,22 +70,22 @@ public class Game {
 "                  It is a period of civil war" +
 "\n";
     System.out.print(prt);
-    pause(1500);
+    pause(500);
     prt = 
 "                 Rebel   spaceships,  striking" +
 "\n";
     System.out.print(prt);
-    pause(1500);
+    pause(500);
     prt = 
 "               from  a  hidden  base,  have   won" +
 "\n";
     System.out.print(prt);
-    pause(1500);
+    pause(500);
     prt = 
 "              their    first    victory    against" +
 "\n";
     System.out.print(prt);
-    pause(1500);
+    pause(500);
     prt = 
 "             the      evil      Galactic      Empire.";
 	System.out.print(prt);
@@ -96,27 +96,27 @@ prt =
 "            During     the        battle,      Rebel" +
 "\n";
     System.out.print(prt);
-    pause(1500);
+    pause(500);
     prt =
 "           spies     managed     to    steal    secret" +
 "\n";
     System.out.print(prt);
-    pause(1500);
+    pause(500);
     prt = 
 "          plans         to         the         Empire's" +
 "\n";
     System.out.print(prt);
-    pause(1500);
+    pause(500);
     prt = 
 "         ultimate        weapon,        the        DEATH" +
 "\n";
     System.out.print(prt);
-    pause(1500);
+    pause(500);
     prt = 
 "        STAR  ,        an          armored          space" +
 "\n";
     System.out.print(prt);
-    pause(1500);
+    pause(500);
 	//================END OF INTRO================
     }//end of newGame()
     //====================================================
@@ -128,6 +128,12 @@ prt =
 	    Thread.currentThread().interrupt();
 	}
     }//end of pause()
+
+    public void kinSec() { //calls Kinematics questions
+	while(kinQs > 0) {
+	    Kinematics Questions = new Kinematics();
+	}
+    }//enf of kinSec
 
     public static void main(String[] args){
 	newGame();
