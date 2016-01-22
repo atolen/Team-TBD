@@ -32,7 +32,7 @@ public class Game {
 
 	String prt = "";
 	String name = "";
-
+	//==============INTRODUCTION=====================
 	prt = "\n";
 	System.out.print( prt );
 
@@ -61,6 +61,63 @@ public class Game {
 
     pause(1000);
 
+    prt =
+"                          A NEW HOPE" +
+"\n\n";
+    System.out.print(prt);
+    pause(2000);
+    prt = 
+"                  It is a period of civil war" +
+"\n";
+    System.out.print(prt);
+    pause(500);
+    prt = 
+"                 Rebel   spaceships,  striking" +
+"\n";
+    System.out.print(prt);
+    pause(500);
+    prt = 
+"               from  a  hidden  base,  have   won" +
+"\n";
+    System.out.print(prt);
+    pause(500);
+    prt = 
+"              their    first    victory    against" +
+"\n";
+    System.out.print(prt);
+    pause(500);
+    prt = 
+"             the      evil      Galactic      Empire.";
+	System.out.print(prt);
+	System.out.print("\n\n");
+	pause(2000);
+
+prt =
+"            During     the        battle,      Rebel" +
+"\n";
+    System.out.print(prt);
+    pause(500);
+    prt =
+"           spies     managed     to    steal    secret" +
+"\n";
+    System.out.print(prt);
+    pause(500);
+    prt = 
+"          plans         to         the         Empire's" +
+"\n";
+    System.out.print(prt);
+    pause(500);
+    prt = 
+"         ultimate        weapon,        the        DEATH" +
+"\n";
+    System.out.print(prt);
+    pause(500);
+    prt = 
+"        STAR  ,        an          armored          space" +
+"\n";
+    System.out.print(prt);
+    pause(500);
+	//================END OF INTRO================
     }//end of newGame()
     //====================================================
 
@@ -71,6 +128,12 @@ public class Game {
 	    Thread.currentThread().interrupt();
 	}
     }//end of pause()
+
+    public void kinSec() { //calls Kinematics questions
+	while(kinQs > 0) {
+	    Kinematics Questions = new Kinematics();
+	}
+    }//enf of kinSec
 
     public static void main(String[] args){
 	newGame();
