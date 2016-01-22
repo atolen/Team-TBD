@@ -28,7 +28,7 @@ public class Game {
 
     //====================================================
 
-    public void newGame() {
+    public static void newGame() {
 
 	String prt = "";
 	String name = "";
@@ -73,7 +73,8 @@ public class Game {
     }//end of pause()
 
     public static void main(String[] args){
-	Driver galaxy = new Driver();
+	//	Driver galaxy = new Driver();
+	newGame();
     }//end of main
 
 }//end of Driver
