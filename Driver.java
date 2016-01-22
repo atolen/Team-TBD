@@ -14,9 +14,47 @@ public class Driver {
     public final static int enQs = 2; // Energy
     public final static int cirQs = 2; // Circular
 
-    private int qCount = 0;
-    private boolean gameOver;
+    private boolean gameOver; // hp at 0? answer all questions?
 
     private InputStreamReader isr;
     private BufferedReader in;
-}
+
+    public Driver() {
+	gameOver = false;
+	isr = new InputStreamReader( System.in );
+	in = new BufferedReader( isr );
+	newGame();
+    }
+
+    //====================================================
+
+    public void newGame() {
+
+	String prt = "";
+	String name = "";
+
+	prt = "\n\t\tA long time ago in a galaxy far,\n\t\tfar away...";
+	prt += "\n\n";
+	prt +=
+"\n                    8888888888  888    88888" +
+"\n                   88     88   88 88   88  88" +
+"\n                    8888  88  88   88  88888" +
+"\n                       88 88 888888888 88   88" +
+"\n                88888888  88 88     88 88    888888" +
+"\n " +
+"\n                88  88  88   888    88888    888888" +
+"\n                88  88  88  88 88   88  88  88" +
+"\n                88 8888 88 88   88  88888    8888" +
+"\n                 888  888 888888888 88   88     88" +
+"\n                  88  88  88     88 88    8888888";
+	prt += "\n\n\n";
+
+    System.out.print( prt );
+    }//end of newGame()
+    //====================================================
+
+    public static void main(String[] args){
+	Driver galaxy = new Driver();
+    }//end of main
+
+}//end of Driver
