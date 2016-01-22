@@ -73,7 +73,6 @@ public class Game {
     }//end of pause()
 
     public static void main(String[] args){
-	//	Driver galaxy = new Driver();
 	newGame();
     }//end of main
 

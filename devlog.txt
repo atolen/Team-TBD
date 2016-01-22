@@ -104,9 +104,10 @@ compare() written, began working on user interface-y things. Progress is being m
 ==============================================================================
 
 2016-01-22
-03:00
+09:00
 
 Began ASCII introduction/user interface-y things in class Game.
+Uses pauses to help with game flow.
 -G
 
 ==============================================================================
