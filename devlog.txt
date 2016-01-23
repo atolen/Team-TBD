@@ -111,3 +111,11 @@ Uses pauses to help with game flow.
 -G
 
 ==============================================================================
+
+2016-01-23
+14:00
+
+Continued work with Game.java, started building other subclasses of Question. (Wind is a-howling, but the snow outside WILL be played in!)
+-G&A
+
+==============================================================================
