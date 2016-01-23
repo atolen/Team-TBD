@@ -59,65 +59,44 @@ public class Game {
 	prt += "\n\n\n";
 
     System.out.print( prt );
-
     pause(1000);
-
     prt =
-"                          A NEW HOPE" +
-"\n\n";
+"                            EPISODE IV\n\n" + 
+"                            A NEW HOPE" +
+	"\n\n";
     System.out.print(prt);
     pause(2000);
     prt = 
-"                  It is a period of civil war" +
-"\n";
+"\t\t    It is a period of civil war.\n" +
+"\t\t     Rebel spaceships, striking\n" +
+"\t\t    from a hidden base, have won\n" +
+"\t\t     heir first victory against\n" +
+"\t\t      the evil Galactic Empire.\n"+
+	"\n\n";
     System.out.print(prt);
-    pause(500);
-    prt = 
-"                 Rebel   spaceships,  striking" +
-"\n";
-    System.out.print(prt);
-    pause(500);
-    prt = 
-"               from  a  hidden  base,  have   won" +
-"\n";
-    System.out.print(prt);
-    pause(500);
-    prt = 
-"              their    first    victory    against" +
-"\n";
-    System.out.print(prt);
-    pause(500);
-    prt = 
-"             the      evil      Galactic      Empire.";
-	System.out.print(prt);
-	System.out.print("\n\n");
-	pause(2000);
-
-prt =
-"            During     the        battle,      Rebel" +
-"\n";
-    System.out.print(prt);
-    pause(500);
+    pause(5000);
     prt =
-"           spies     managed     to    steal    secret" +
-"\n";
+"\t\t      During the battle, Rebel\n" +
+"\t\t    spies managed to steal secret\n" +
+"\t\t        plans to the Empire's\n" +
+"\t\t     ultimate weapon, the DEATH\n" +
+"\t\t       STAR, an armored space\n" +
+"\t\t      station with enough power\n" +
+"\t\t     to destroy an entire planet." +
+	"\n\n";
     System.out.print(prt);
-    pause(500);
+    pause(5000);
     prt = 
-"          plans         to         the         Empire's" +
-"\n";
+"\t\t       Pursued by the Empire's\n" +
+"\t\t      sinister agents, Princess\n" +
+"\t\t      Leia races home aboard her\n" +
+"\t\t      starship, custodian of the\n" +
+"\t\t    stolen plans that can save her\n" +
+"\t\t         people and restore\n" +
+"\t\t      freedom to the galaxy...." +
+	"\n\n";
     System.out.print(prt);
-    pause(500);
-    prt = 
-"         ultimate        weapon,        the        DEATH" +
-"\n";
-    System.out.print(prt);
-    pause(500);
-    prt = 
-"        STAR  ,        an          armored          space" +
-"\n";
-    System.out.print(prt);
-    pause(500);
+    pause(5000);
 	//================END OF INTRO================
     }//end of newGame()
     //====================================================
