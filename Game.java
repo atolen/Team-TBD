@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 import physics.*;
+import story.*;
 
 public class Game {
 
@@ -16,6 +17,7 @@ public class Game {
     public final static int cirQs = 2; // Circular
 
     private boolean gameOver; // hp at 0? answer all questions?
+    private float userAns; // holds user answer
 
     private InputStreamReader isr;
     private BufferedReader in;
@@ -101,13 +103,30 @@ public class Game {
     }//end of newGame()
     //====================================================
 
+    //pause(int time) pauses program for time milliseconds
     public static void pause(int time) {
 	try {
-	    Thread.sleep(time);//1000 milliseconds
+	    Thread.sleep(time);//time in milliseconds
 	} catch(InterruptedException ex) {
 	    Thread.currentThread().interrupt();
 	}
     }//end of pause()
+
+    //getAnswer() gets the inputed answer to question
+    public void getAnswer() {
+	try {
+	    userAns = Float.parseFloat( in.readLine() );
+	}
+	catch (IOException e) {}
+    }//end of getAnswer
+
+    //getName() gets name of user for Jedi
+    public void Name() {
+	try {
+	    Jedi.setName( in.readLine() );
+	}
+	catch (IOException e) {}
+    }//end of getName()
 
     public void kinSec() { //calls Kinematics questions
 	while(kinQs > 0) {
