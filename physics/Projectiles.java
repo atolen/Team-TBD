@@ -116,6 +116,25 @@ public class Projectiles extends Question {
 	    return;
 	}
 
+	//finding dy
+	else if( dy == null && viy != null && a != null ) { //kin5,kin12 find d
+	    if( t != null ) {
+		unknowns.put("dy",Kinematics.kin5(viy,t,a)); //kin5
+		vars.put("dy",unknowns.get("dy"));
+	    }
+	    else {
+		unknowns.put("dy",Kinematics.kin12(vfy,viy,a)); //kin12
+		vars.put("dy",unknowns.get("dy"));
+	    }
+	    return;
+	}
+
+	//finding dx
+	else if( dx == null && vix !=null && t !=null) {
+	    unknowns.put("dx", t*vix);
+	    vars.put("dx",unknowns.get("dx"));
+	}
+
 
 	//finding theta
 	else if( theta == null && vix != null && vi != null ) { unknowns.put("theta",proj3()); }
