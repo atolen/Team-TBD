@@ -16,35 +16,49 @@ public class Projectiles extends Question {
     private Double ay;//acceleration -- y component
     
     private Double t;//time
-      
+
+    
+    //========================METHODS========================
+    
     public String toString() {
 	return vars.toString();
     }
     
-    // constructors
+    //constructors
     public Projectiles() {
 	numVars = 9;
 	populate();
-	d = vars.get("d");
+	dx = vars.get("dx");
+	dy = vars.get("dy");
 	vi = vars.get("vi");
-	vf = vars.get("vf");
-	a = vars.get("a");
+	vix = vars.get("vix");
+	viy = vars.get("viy");	
+	vfy = vars.get("vfy");
+	angle = vars.get("angle");
+	ay = vars.get("ay");
 	t = vars.get("t");
     }
 
-    //populate()
+    //populate() -- postcond: assigns random values to variables
+    //              values of vix and viy set to the cosine and sine of vi, respectively
     public void populate() {
-	varList.add("d");
+	varList.add("dx");
+	varList.add("dy");	
 	varList.add("vi");
-	varList.add("vf");
-	varList.add("a");
+	varList.add("vix");
+	varList.add("viy");	
+	varList.add("vfy");
+	varList.add("angle");	
+	varList.add("ay");
 	varList.add("t");
-	assignVals(0,10,0);
+	assignVals(0,20,0);
+	vars.put("vix",Math.cos(vars.get("vi")));
+	vars.put("viy",Math.sin(vars.get("vi")));
     }
 
     
     //========================CALCULATOR========================
-
+    
     //finds rightAns
     public String calculate() {
        	while( vars.containsValue(null)) 
@@ -53,14 +67,14 @@ public class Projectiles extends Question {
     }
 
     public void whichFxn() {
-	if( d == null && !(vi == null) && a != null ) { //kin5,kin12 find d
+	if( d == null && !(vi == null) && a != null ) { //proj5,proj12 find d
 	    if( t != null ) {
-		unknowns.put("d",kin5()); //kin5
-		vars.put("d",kin5());
+		unknowns.put("d",proj5()); //proj5
+		vars.put("d",proj5());
 	    }
 	    else {
-		unknowns.put("d",kin12()); //kin12
-		vars.put("d",kin12());
+		unknowns.put("d",proj12()); //proj12
+		vars.put("d",proj12());
 	    }
 	    return;
 	}
@@ -68,29 +82,29 @@ public class Projectiles extends Question {
 	else if( vi == null ) {
 	    if( t != null ) {
 		if( vf != null ) {
-		    unknowns.put("vi",kin3()); //kin3
-		    vars.put("vi",kin3());
+		    unknowns.put("vi",proj3()); //proj3
+		    vars.put("vi",proj3());
 		}
 		else {
-		    unknowns.put("vi",kin6()); //kin6
-		    vars.put("vi",kin6());
+		    unknowns.put("vi",proj6()); //proj6
+		    vars.put("vi",proj6());
 		}
 	    }
 	    else {
-		unknowns.put("vi",kin10()); //kin10
-		vars.put("vi",kin10());
+		unknowns.put("vi",proj10()); //proj10
+		vars.put("vi",proj10());
 	    }
 	    return;
 	}
 
 	else if( vf == null ) {
 	    if( t != null ) {
-		unknowns.put("vf",kin2());
-		vars.put("vf",kin2());
+		unknowns.put("vf",proj2());
+		vars.put("vf",proj2());
 	    }
 	    else {
-		unknowns.put("vf",kin9());
-		vars.put("vf",kin9());
+		unknowns.put("vf",proj9());
+		vars.put("vf",proj9());
 	    }
 	    return;
 	}
@@ -98,29 +112,29 @@ public class Projectiles extends Question {
 	else if( a == null ) {
 	    if( vi != null && t != null ) {
 		if( d == null ) {
-		    unknowns.put("a",kin1());
-		    vars.put("a",kin1());
+		    unknowns.put("a",proj1());
+		    vars.put("a",proj1());
 		}
 		else {
-		    unknowns.put("a",kin8());
-		    vars.put("a",kin8());
+		    unknowns.put("a",proj8());
+		    vars.put("a",proj8());
 		}
 	    }
 	    else {
-		unknowns.put("a",kin11());
-		vars.put("a",kin11());
+		unknowns.put("a",proj11());
+		vars.put("a",proj11());
 	    }
 	    return;
 	}
 	    
 	else { // t unknown
 	    if( vf != null ) {
-		unknowns.put("t",kin4());
-		vars.put("t",kin4());
+		unknowns.put("t",proj4());
+		vars.put("t",proj4());
 	    }
 	    else {
-		unknowns.put("t",kin7());
-		vars.put("t",kin7());
+		unknowns.put("t",proj7());
+		vars.put("t",proj7());
 	    }
 	    return;
 	}
@@ -129,44 +143,44 @@ public class Projectiles extends Question {
     //===============a = (vf - vi)/t DERIVED===============
 
     //a = (vf - vi)/t >> if vf, vi, t are known
-    public double kin1() {
+    public double proj1() {
 	return (vf - vi) / t;
     }
 
     //vf = vi + at  >> if vi, a, t are known
-    public double kin2() {
+    public double proj2() {
 	return vi + (a*t);
     }
 
     //vi = at - vf >> if a, t, vf are known
-    public double kin3() {
+    public double proj3() {
 	return a*t - vf;
     }
 
     //t = (vf - vi)/a >> if vf, vi, a are known
-    public double kin4() {
+    public double proj4() {
 	return (vf - vi) / a;
     }
 
     //============d = vit + (0.5)at^2 DERIVED=========
 
     //d = vit + (0.5)at^2 >> if vi, t, a are known
-    public double kin5() {
+    public double proj5() {
 	return (vi*t) + ((0.5)*a*Math.pow(t,2));
     }
 
     //vi = (d - (0.5)at^2)/t >> if d, a, t are known
-    public double kin6() {
+    public double proj6() {
 	return (d - 0.5*a*Math.pow(t,2)) / t;
     }
 
     //t = sqrt(2d/a) >> if d, a are known, vi == 0
-    public double kin7() {
+    public double proj7() {
 	return Math.sqrt((2*d)/a);
     }
 
     //a = (2(d - vit))/t^2 >> if d, vi, t are known
-    public double kin8() {
+    public double proj8() {
 	return (2*(d - vi*t)) / Math.pow(vi,2);
     }
     //================================================
@@ -174,32 +188,32 @@ public class Projectiles extends Question {
     //============vf^2 = vi^2 + 2ad DERIVED=========
 
     //vf = sqrt(vi^2 + 2ad) >> if vi, a, d are known
-    public double kin9() {
+    public double proj9() {
 	return Math.sqrt(Math.pow(vi,2) + 2*a*d);
     }
 
     //vi = sqrt(vf^2 - 2ad) >> if vf, a, d are known
-    public double kin10() {
+    public double proj10() {
 	return Math.sqrt(Math.pow(vf,2) - 2*a*d);
     }
 
     //a = (vf^2 - vi^2) / 2d >> if vf, vi, d are known
-    public double kin11() {
+    public double proj11() {
 	return (Math.pow(vf,2) - Math.pow(vi,2)) / (2*d);
     }
 
     //d = (vf^2 - vi^2) / 2a >> if vf, vi, a are known
-    public double kin12() {
+    public double proj12() {
 	return (Math.pow(vf,2) - Math.pow(vi,2)) / (2*a);
     }
     //================================================
 
 
     public static void main( String[] args ) {
-	Kinematics luke = new Kinematics();
+	Projectiles luke = new Projectiles();
 	System.out.println(luke);
 	System.out.println(luke.calculate());
     }
-    
-} // close class Kinematics
+    */
+} // close class Projectiles
  
