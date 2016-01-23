@@ -46,8 +46,6 @@ public class Projectiles extends Question {
 	varList.add("dx");
 	varList.add("dy");	
 	varList.add("vi");
-	varList.add("vix");
-	varList.add("viy");	
 	varList.add("vfy");
 	varList.add("angle");	
 	varList.add("ay");
@@ -66,7 +64,7 @@ public class Projectiles extends Question {
 	    whichFxn();
 	return unknowns.toString();
     }
-
+    /*
     public void whichFxn() {
 	if( d == null && !(vi == null) && a != null ) { //proj5,proj12 find d
 	    if( t != null ) {
@@ -214,7 +212,7 @@ public class Projectiles extends Question {
 	Projectiles luke = new Projectiles();
 	System.out.println(luke);
 	System.out.println(luke.calculate());
-    }
-    */
+	} */
+    
 } // close class Projectiles
  

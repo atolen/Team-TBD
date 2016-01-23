@@ -44,12 +44,12 @@ public class Kinematics extends Question {
     public void whichFxn() {
 	if( d == null && !(vi == null) && a != null ) { //kin5,kin12 find d
 	    if( t != null ) {
-		unknowns.put("d",kin5()); //kin5
-		vars.put("d",kin5());
+		unknowns.put("d",kin5(vi,t,a)); //kin5
+		vars.put("d",unknowns.get("d"));
 	    }
 	    else {
-		unknowns.put("d",kin12()); //kin12
-		vars.put("d",kin12());
+		unknowns.put("d",kin12(vf,vi,a)); //kin12
+		vars.put("d",unknowns.get("d"));
 	    }
 	    return;
 	}
@@ -57,29 +57,29 @@ public class Kinematics extends Question {
 	else if( vi == null ) {
 	    if( t != null ) {
 		if( vf != null ) {
-		    unknowns.put("vi",kin3()); //kin3
-		    vars.put("vi",kin3());
+		    unknowns.put("vi",kin3(a,t,vf)); //kin3
+		    vars.put("vi",unknowns.get("vi"));
 		}
 		else {
-		    unknowns.put("vi",kin6()); //kin6
-		    vars.put("vi",kin6());
+		    unknowns.put("vi",kin6(d,a,t)); //kin6
+		    vars.put("vi",unknowns.get("vi"));
 		}
 	    }
 	    else {
-		unknowns.put("vi",kin10()); //kin10
-		vars.put("vi",kin10());
+		unknowns.put("vi",kin10(vf,a,d)); //kin10
+		vars.put("vi",unknowns.get("vi"));
 	    }
 	    return;
 	}
 
 	else if( vf == null ) {
 	    if( t != null ) {
-		unknowns.put("vf",kin2());
-		vars.put("vf",kin2());
+		unknowns.put("vf",kin2(vi,a,t));
+		vars.put("vf",unknowns.get("vf"));
 	    }
 	    else {
-		unknowns.put("vf",kin9());
-		vars.put("vf",kin9());
+		unknowns.put("vf",kin9(vi,a,d));
+		vars.put("vf",unknowns.get("vf"));
 	    }
 	    return;
 	}
@@ -87,29 +87,29 @@ public class Kinematics extends Question {
 	else if( a == null ) {
 	    if( vi != null && t != null ) {
 		if( d == null ) {
-		    unknowns.put("a",kin1());
-		    vars.put("a",kin1());
+		    unknowns.put("a",kin1(vf,vi,d));
+		    vars.put("a",unknowns.get("a"));
 		}
 		else {
-		    unknowns.put("a",kin8());
-		    vars.put("a",kin8());
+		    unknowns.put("a",kin8(d,vi,t));
+		    vars.put("a",unknowns.get("a"));
 		}
 	    }
 	    else {
-		unknowns.put("a",kin11());
-		vars.put("a",kin11());
+		unknowns.put("a",kin11(vf,vi,d));
+		vars.put("a",unknowns.get("a"));
 	    }
 	    return;
 	}
 	    
 	else { // t unknown
 	    if( vf != null ) {
-		unknowns.put("t",kin4());
-		vars.put("t",kin4());
+		unknowns.put("t",kin4(vf,vi,a));
+		vars.put("t",unknowns.get("t"));
 	    }
 	    else {
-		unknowns.put("t",kin7());
-		vars.put("t",kin7());
+		unknowns.put("t",kin7(d,a));
+		vars.put("t",unknowns.get("t"));
 	    }
 	    return;
 	}
@@ -118,44 +118,44 @@ public class Kinematics extends Question {
     //===============a = (vf - vi)/t DERIVED===============
 
     //a = (vf - vi)/t >> if vf, vi, t are known
-    public double kin1() {
+    public static double kin1(double vf, double vi, double t) {
 	return (vf - vi) / t;
     }
 
     //vf = vi + at  >> if vi, a, t are known
-    public double kin2() {
+    public static double kin2(double vi, double a, double t) {
 	return vi + (a*t);
     }
 
     //vi = at - vf >> if a, t, vf are known
-    public double kin3() {
+    public static double kin3(double a, double t, double vf) {
 	return a*t - vf;
     }
 
     //t = (vf - vi)/a >> if vf, vi, a are known
-    public double kin4() {
+    public static double kin4(double vf, double vi, double a) {
 	return (vf - vi) / a;
     }
 
     //============d = vit + (0.5)at^2 DERIVED=========
 
     //d = vit + (0.5)at^2 >> if vi, t, a are known
-    public double kin5() {
+    public static double kin5(double vi, double t, double a) {
 	return (vi*t) + ((0.5)*a*Math.pow(t,2));
     }
 
     //vi = (d - (0.5)at^2)/t >> if d, a, t are known
-    public double kin6() {
+    public static double kin6(double d, double a, double t) {
 	return (d - 0.5*a*Math.pow(t,2)) / t;
     }
 
     //t = sqrt(2d/a) >> if d, a are known, vi == 0
-    public double kin7() {
+    public static double kin7(double d, double a) {
 	return Math.sqrt((2*d)/a);
     }
 
     //a = (2(d - vit))/t^2 >> if d, vi, t are known
-    public double kin8() {
+    public static double kin8(double d, double vi, double t) {
 	return (2*(d - vi*t)) / Math.pow(vi,2);
     }
     //================================================
@@ -163,22 +163,22 @@ public class Kinematics extends Question {
     //============vf^2 = vi^2 + 2ad DERIVED=========
 
     //vf = sqrt(vi^2 + 2ad) >> if vi, a, d are known
-    public double kin9() {
+    public static double kin9(double vi, double a, double d) {
 	return Math.sqrt(Math.pow(vi,2) + 2*a*d);
     }
 
     //vi = sqrt(vf^2 - 2ad) >> if vf, a, d are known
-    public double kin10() {
+    public static double kin10(double vf, double a, double d) {
 	return Math.sqrt(Math.pow(vf,2) - 2*a*d);
     }
 
     //a = (vf^2 - vi^2) / 2d >> if vf, vi, d are known
-    public double kin11() {
+    public static double kin11(double vf, double vi, double d) {
 	return (Math.pow(vf,2) - Math.pow(vi,2)) / (2*d);
     }
 
     //d = (vf^2 - vi^2) / 2a >> if vf, vi, a are known
-    public double kin12() {
+    public static double kin12(double vf, double vi, double a) {
 	return (Math.pow(vf,2) - Math.pow(vi,2)) / (2*a);
     }
     //================================================
