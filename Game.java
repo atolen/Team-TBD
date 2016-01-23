@@ -1,12 +1,12 @@
 import java.io.*;
 import java.util.*;
 import physics.*;
-import story.*;
 
 public class Game {
 
     //Instance Vars
-
+    private Jedi luke = new Jedi(); //character
+    
     //change these constants to choose which topics to focus on
     public final static int kinQs = 2; // Kinematics
     public final static int motQs = 2; // Motion
@@ -17,7 +17,7 @@ public class Game {
     public final static int cirQs = 2; // Circular
 
     private boolean gameOver; // hp at 0? answer all questions?
-    private float userAns; // holds user answer
+    private double userAns; // holds user answer
 
     private InputStreamReader isr;
     private BufferedReader in;
@@ -26,13 +26,11 @@ public class Game {
 	gameOver = false;
 	isr = new InputStreamReader( System.in );
 	in = new BufferedReader( isr );
-	newGame();
     }
 
     //====================================================
 
-    public static void newGame() {
-
+    public void newGame() {
 	String prt = "";
 	String name = "";
 	//==============INTRODUCTION=====================
@@ -44,61 +42,65 @@ public class Game {
 	prt = "\t\tA long time ago in a galaxy far,\n\t\tfar away...\n\n";
 	System.out.print( prt );
 
-	pause(3000);
+	pause(2000);
 
 	prt =
-"\n                    8888888888  888    88888" +
-"\n                   88     88   88 88   88  88" +
-"\n                    8888  88  88   88  88888" +
-"\n                       88 88 888888888 88   88" +
-"\n                88888888  88 88     88 88    888888" +
-"\n " +
-"\n                88  88  88   888    88888    888888" +
-"\n                88  88  88  88 88   88  88  88" +
-"\n                88 8888 88 88   88  88888    8888" +
-"\n                 888  888 888888888 88   88     88" +
-"\n                  88  88  88     88 88    8888888";
-	prt += "\n\n\n";
+	    "\t        ________________.  ___     .______  \n" +
+	    "\t       /                | /   \\    |   _  \\ \n" +
+	    "\t      |   (-----|  |----`/  ^  \\   |  |_)  | \n" +
+	    "\t       \\   \\    |  |    /  /_\\  \\  |      / \n" +
+	    "\t  .-----)   |   |  |   /  _____  \\ |  |\\  \\-------. \n" +
+	    "\t  |________/    |__|  /__/     \\__\\| _| `.________| \n" +
+	    "\t   ____    __    ____  ___     .______    ________. \n" +
+	    "\t   \\   \\  /  \\  /   / /   \\    |   _  \\  /        | \n" +
+	    "\t    \\   \\/    \\/   / /  ^  \\   |  |_)  ||   (-----` \n" +
+	    "\t     \\            / /  /_\\  \\  |      /  \\   \\ \n" +
+	    "\t      \\    /\\    / /  _____  \\ |  |\\  \\---)   | \n" +
+	    "\t       \\__/  \\__/ /__/     \\__\\|__| `._______/ \n\n" ;
 
-    System.out.print( prt );
-    pause(1000);
-    prt =
-"                            EPISODE IV\n\n" + 
-"                            A NEW HOPE" +
-	"\n\n";
-    System.out.print(prt);
-    pause(2000);
-    prt = 
-"\t\t    It is a period of civil war.\n" +
-"\t\t     Rebel spaceships, striking\n" +
-"\t\t    from a hidden base, have won\n" +
-"\t\t    their first victory against\n" +
-"\t\t      the evil Galactic Empire.\n"+
-	"\n\n";
-    System.out.print(prt);
-    pause(5000);
-    prt =
-"\t\t      During the battle, Rebel\n" +
-"\t\t    spies managed to steal secret\n" +
-"\t\t        plans to the Empire's\n" +
-"\t\t     ultimate weapon, the DEATH\n" +
-"\t\t       STAR, an armored space\n" +
-"\t\t      station with enough power\n" +
-"\t\t     to destroy an entire planet." +
-	"\n\n";
-    System.out.print(prt);
-    pause(5000);
-    prt = 
-"\t\t       Pursued by the Empire's\n" +
-"\t\t      sinister agents, Princess\n" +
-"\t\t      Leia races home aboard her\n" +
-"\t\t      starship, custodian of the\n" +
-"\t\t    stolen plans that can save her\n" +
-"\t\t         people and restore\n" +
-"\t\t      freedom to the galaxy...." +
-	"\n\n";
-    System.out.print(prt);
-    pause(5000);
+	System.out.print( prt );
+	pause(1000);
+	prt =
+	    "                            EPISODE IV\n\n" + 
+	    "                            A NEW HOPE" +
+	    "\n\n";
+	System.out.print(prt);
+	pause(2000);
+	prt = 
+	    "\t\t    It is a period of civil war.\n" +
+	    "\t\t     Rebel spaceships, striking\n" +
+	    "\t\t    from a hidden base, have won\n" +
+	    "\t\t    their first victory against\n" +
+	    "\t\t     the evil Galactic Empire.\n"+
+	    "\n\n";
+	System.out.print(prt);
+	pause(5000);
+	prt =
+	    "\t\t      During the battle, Rebel\n" +
+	    "\t\t    spies managed to steal secret\n" +
+	    "\t\t        plans to the Empire's\n" +
+	    "\t\t     ultimate weapon, the DEATH\n" +
+	    "\t\t       STAR, an armored space\n" +
+	    "\t\t      station with enough power\n" +
+	    "\t\t     to destroy an entire planet." +
+	    "\n\n";
+	System.out.print(prt);
+	pause(5000);
+	prt = 
+	    "\t\t       Pursued by the Empire's\n" +
+	    "\t\t      sinister agents, Princess\n" +
+	    "\t\t      Leia races home aboard her\n" +
+	    "\t\t      starship, custodian of the\n" +
+	    "\t\t    stolen plans that can save her\n" +
+	    "\t\t         people and restore\n" +
+	    "\t\t      freedom to the galaxy...." +
+	    "\n\n";
+	System.out.print(prt);
+	pause(5000);
+	
+	System.out.println("Greetings, young one! What do you call yourself?");
+	name();
+	System.out.println("Welcome, " + luke.getName() +".");
 	//================END OF INTRO================
     }//end of newGame()
     //====================================================
@@ -113,29 +115,31 @@ public class Game {
     }//end of pause()
 
     //getAnswer() gets the inputed answer to question
-    public void getAnswer() {
+    public void getUserAnswer() {
 	try {
-	    userAns = Float.parseFloat( in.readLine() );
+	    userAns = Double.parseDouble( in.readLine() );
 	}
 	catch (IOException e) {}
-    }//end of getAnswer
+    }//end of getUserAnswer
 
     //getName() gets name of user for Jedi
-    public void Name() {
+    
+    public void name() {
 	try {
-	    Jedi.setName( in.readLine() );
+	    luke.setName( in.readLine() );
 	}
 	catch (IOException e) {}
-    }//end of getName()
+    }//end of name()
 
     public void kinSec() { //calls Kinematics questions
 	while(kinQs > 0) {
-	    Kinematics question = new Kinematics();
+	    Kinematics q = new Kinematics();
 	}
     }//enf of kinSec
 
-    public static void main(String[] args){
-	newGame();
+    public static void main(String[] args) {
+	Game game = new Game();
+	game.newGame();
     }//end of main
 
 }//end of Driver
