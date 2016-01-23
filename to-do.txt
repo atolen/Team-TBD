@@ -1,4 +1,4 @@
-- write all Question subclasses -- 1/22
+- write all Question subclasses -- 1/23
 - ensure that physics works -- 1/23
 - finish rpg classes -- 1/24
 - finish user interfaces -- 1/24
