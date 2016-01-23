@@ -72,7 +72,7 @@ public class Game {
 "\t\t    It is a period of civil war.\n" +
 "\t\t     Rebel spaceships, striking\n" +
 "\t\t    from a hidden base, have won\n" +
-"\t\t     heir first victory against\n" +
+"\t\t    their first victory against\n" +
 "\t\t      the evil Galactic Empire.\n"+
 	"\n\n";
     System.out.print(prt);

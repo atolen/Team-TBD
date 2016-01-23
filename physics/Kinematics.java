@@ -37,12 +37,12 @@ public class Kinematics extends Question {
     //finds rightAns
     public String calculate() {
        	while( vars.containsValue(null)) 
-	    whichFxn();
+	    solve();
 	return unknowns.toString();
     }
 
-    public void whichFxn() {
-	if( d == null && !(vi == null) && a != null ) { //kin5,kin12 find d
+    public void solve() {
+	if( d == null && vi != null && a != null ) { //kin5,kin12 find d
 	    if( t != null ) {
 		unknowns.put("d",kin5(vi,t,a)); //kin5
 		vars.put("d",unknowns.get("d"));

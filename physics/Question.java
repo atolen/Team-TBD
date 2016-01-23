@@ -74,6 +74,11 @@ public abstract class Question {
 	return (unknowns.get(key) * 1.15 >= userInput.get(key) && unknowns.get(key) * 0.85 <= userInput.get(key));
     }
 
+    public static double pythTheorem(double a,double b) { //Pythagorean Theorem
+	return Math.sqrt( Math.pow(a,2) + Math.pow(a,2) );
+    }
+
+
 } // close class Question
     
 
