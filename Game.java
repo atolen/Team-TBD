@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import physics.*;
 
 public class Game {
 
@@ -7,11 +8,11 @@ public class Game {
 
     //change these constants to choose which topics to focus on
     public final static int kinQs = 2; // Kinematics
-    public final static int moQs = 2; // Motion
+    public final static int motQs = 2; // Motion
     public final static int proQs = 2; // Projectiles
     public final static int forQs = 2; // Force
     public final static int momQs = 2; // Momentum
-    public final static int enQs = 2; // Energy
+    public final static int eneQs = 2; // Energy
     public final static int cirQs = 2; // Circular
 
     private boolean gameOver; // hp at 0? answer all questions?
@@ -131,7 +132,7 @@ prt =
 
     public void kinSec() { //calls Kinematics questions
 	while(kinQs > 0) {
-	    Kinematics Questions = new Kinematics();
+	    Kinematics question = new Kinematics();
 	}
     }//enf of kinSec
 

@@ -1,3 +1,4 @@
+package physics;
 public class Projectiles extends Question {
     private Double dx;//displacement in x direction
     private Double dy;//displacement in y direction
