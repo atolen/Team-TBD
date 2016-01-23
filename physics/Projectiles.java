@@ -63,41 +63,87 @@ public class Projectiles extends Question {
     
     //finds rightAns
     public String calculate() {
-       	while( vars.containsValue(null) ) 
+       	while( vars.containsValue(null) )
 	    solve();
 	return unknowns.toString();
     }
   
     public void solve() {
-	if( vix == null && vi != null && theta != null ) { unknowns.put("vix",proj1()); }
+
+	//finging vi
+	if( vi == null && vix != null && viy != null ) { unknowns.put("vi",pythTheorem(vix,viy)); }
+
+	//finding vix
+	else if( vix == null && vi != null && theta != null ) { unknowns.put("vix",proj1()); }
+	else if( vix == null ) {
+	    if( t != null && dx != null) {
+		unknowns.put("vix",dx/t);
+		vars.put("vix",unknowns.get("vix"));
+	    }
+	    return;
+	}
+
+	//finding viy
 	else if( viy == null && vi != null && theta != null ) { unknowns.put("viy",proj2()); }
-	else if( vi == null && vix != null && viy != null ) { unknowns.put("vi",pythTheorem(vix,viy)); }
+	else if( viy == null) {
+	    if( t != null) {
+		if(vfy != null) {
+		    unknowns.put("viy",Kinematics.kin3(a,t,vfy));
+		    vars.put("viy",Kinematics.kin3(a,t,vfy));
+		}
+		else {
+		    unknowns.put("viy",Kinematics.kin6(dy,a,t)); //kin6
+		    vars.put("viy",unknowns.get("viy"));
+		}
+	    }
+	    else {
+		unknowns.put("viy",Kinematics.kin10(vfy,a,dy)); //kin10
+		vars.put("viy",unknowns.get("viy"));
+	    }
+	    return;
+	}
+
+	//finding vfy
+	else if( vfy == null ) {
+	    if( t != null ) {
+		unknowns.put("vfy",Kinematics.kin2(viy,a,t));
+		vars.put("vfy",unknowns.get("vfy"));
+	    }
+	    else {
+		unknowns.put("vfy",Kinematics.kin9(viy,a,dy));
+		vars.put("vfy",unknowns.get("vfy"));
+	    }
+	    return;
+	}
+
+
+	//finding theta
 	else if( theta == null && vix != null && vi != null ) { unknowns.put("theta",proj3()); }
 	else if( theta == null && viy != null && vi != null ) { unknowns.put("theta",proj4()); }
 	else if( theta == null && viy != null && vix != null ) { unknowns.put("theta",proj5()); }
     }
 	
-    
+    //==========EQUATIONS=============    
     public double proj1() { //find vix
-	return vi*Math.cos(theta);
+	return vi*Math.cos(Math.toRadians(theta));
     }
 
     public double proj2() { //find viy
-	return vi*Math.sin(theta);
+	return vi*Math.sin(Math.toRadians(theta));
     }
 
     public double proj3() { //find theta >> vix, vi known
-	return acos(vix/vi); //arccos
+	return Math.toDegrees(Math.acos(vix/vi)); //arccos
     }
 
     public double proj4() { //find theta >> viy,vi known
-	return asin(viy/vi); //arcsin
+	return Math.toDegrees(Math.asin(viy/vi)); //arcsin
     }
 
     public double proj5() { //find theta >> viy,vix known
-	atan(viy/vix); //arctan
+	return Math.toDegrees(Math.atan(viy/vix)); //arctan
     }
-
+    //============================================
     
 
     public static void main( String[] args ) {
