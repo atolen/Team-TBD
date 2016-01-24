@@ -168,7 +168,20 @@ public class Projectiles extends Question {
 	    return;}
 	else if( theta == null && viy != null && vix != null ) {
 	    unknowns.put("theta",proj5());
-	    return;}
+	    return;
+	}
+
+	//finding t
+	else {
+	    if( vfy != null ) {
+		unknowns.put("t",Kinematics.kin4(vfy,vi,a));
+		vars.put("t",unknowns.get("t"));
+	    }
+	    else {
+		unknowns.put("t",Kinematics.kin7(dy,a)); //DX OR DY???????????????
+		vars.put("t",unknowns.get("t"));
+	    }
+	}
     }
 	
     //==========EQUATIONS=============    
@@ -196,11 +209,11 @@ public class Projectiles extends Question {
 
     public static void main( String[] args ) {
 	Projectiles luke = new Projectiles();
-	if( luke.vi == null ) {
+	if( luke.t == null ) {
 	    System.out.println(luke);
 	    System.out.println(luke.calculate());
 	}
-    } 
+    }
     
 } // close class Projectiles
  
