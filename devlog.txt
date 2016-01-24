@@ -136,3 +136,13 @@ Continued work on Projectiles, fixed runtime problems. Projectiles can now solve
 -G&A
 
 ==============================================================================
+
+2016-01-24
+20:00
+
+PROJECTILES FULLY FUNCTIONAL!
+Much progress being made with Game.java. Storyline + user interface-y things have come far.
+Grace learned emacs! :D
+-G&A
+
+==============================================================================
