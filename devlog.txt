@@ -127,3 +127,12 @@ Kinematics methods made static and applied to class Projectiles. User input mech
 -G&A
 
 ==============================================================================
+
+2016-01-24
+11:00
+
+Fixed NoClassDefFound error (was a doozy).
+Continued work on Projectiles, fixed runtime problems. Projectiles can now solve for 3 of 8 variables. The rest will work in time.
+-G&A
+
+==============================================================================
