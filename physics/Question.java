@@ -78,6 +78,10 @@ public abstract class Question {
 	return Math.sqrt( Math.pow(a,2) + Math.pow(a,2) );
     }
 
+    public static double revPythTheorem(double c,double a) { //find leg using Pythagorean Theorem
+	return Math.sqrt(Math.pow(c,2) - Math.pow(a,2));
+    }
+
 
 } // close class Question
     

@@ -27,7 +27,7 @@ public class Projectiles extends Question {
     
     //constructors
     public Projectiles() {
-	numVars = 8;
+	numVars = 7;
 	populate();
 	dx = vars.get("dx");
 	dy = vars.get("dy");
@@ -41,7 +41,8 @@ public class Projectiles extends Question {
     }
 
     //populate() -- postcond: assigns random values to variables
-    //              values of vix and viy set to the cosine and sine of vi, respectively
+    //              values of vix and viy set to vi times cosine and sine of theta, respectively
+    //              theta set to appropriate value based on vix/viy/vi
     public void populate() {
 	varList.add("dx");
 	varList.add("dy");	
@@ -51,11 +52,14 @@ public class Projectiles extends Question {
 	varList.add("vfy");
 	varList.add("theta");	
 	varList.add("t");
-	assignVals(0,10,0);
+	assignVals(0,20,0);
 	vars.put("a",a);
 	if( vars.get("vix") != null && vars.get(theta) != null) { vars.put("vix",proj1()); } // set to vcostheta
 	if( vars.get("viy") != null && vars.get(theta) != null) { vars.put("viy",proj2()); } // set to vsintheta
 
+	if( theta != null && vix != null && vi != null ) { vars.put("theta",proj3()); }
+	else if( theta != null && viy != null && vi != null ) { vars.put("theta",proj4()); }
+	else if( theta != null && vix != null && viy != null ) { vars.put("theta",proj5()); }	
     }
 
     
@@ -63,9 +67,8 @@ public class Projectiles extends Question {
     
     //finds rightAns
     public String calculate() {
-       	while( vars.containsValue(null) )
+       	while( vars.containsValue(null) ) 
 	    solve();
-	//	    System.out.println(unknowns.toString());
 	return unknowns.toString();
     }
   
@@ -107,24 +110,22 @@ public class Projectiles extends Question {
 
 	//finding viy
 	else if( viy == null && vi != null && theta != null ) { unknowns.put("viy",proj2()); }
-	else if( viy == null) {
-	    if( t != null) {
-		if(vfy != null) {
-		    unknowns.put("viy",Kinematics.kin3(a,t,vfy));
-		    vars.put("viy",Kinematics.kin3(a,t,vfy));
-		}
-		else {
-		    unknowns.put("viy",Kinematics.kin6(dy,a,t)); //kin6
-		    vars.put("viy",unknowns.get("viy"));
-		}
+	else if( viy == null ) {
+	    if( t != null && vfy != null ) {
+		unknowns.put("vi",Kinematics.kin3(a,t,vfy));
+		vars.put("vi",unknowns.get("vi"));
+	    }
+	    else if( vfy != null && dy != null ) {
+		unknowns.put("vi",Kinematics.kin10(vfy,a,dy));
+		vars.put("vi",unknowns.get("vi"));
 	    }
 	    else {
-		unknowns.put("viy",Kinematics.kin10(vfy,a,dy)); //kin10
-		vars.put("viy",unknowns.get("viy"));
+		unknowns.put("vi",Kinematics.kin6(dy,a,t));
+		vars.put("vi",unknowns.get("vi"));
 	    }
 	    return;
 	}
-
+	
 	//finding vfy
 	else if( vfy == null ) {
 	    if( t != null && viy != null) {
@@ -158,29 +159,34 @@ public class Projectiles extends Question {
 	    return;
 	}
 
-
-	//finding theta
-	else if( theta == null && vix != null && vi != null ) {
-	    unknowns.put("theta",proj3());
-	    return;}
-	else if( theta == null && viy != null && vi != null ) {
-	    unknowns.put("theta",proj4());
-	    return;}
-	else if( theta == null && viy != null && vix != null ) {
-	    unknowns.put("theta",proj5());
-	    return;
-	}
-
 	//finding t
-	else {
+	else if( t == null ) {
 	    if( vfy != null ) {
-		unknowns.put("t",Kinematics.kin4(vfy,vi,a));
+		unknowns.put("t",Kinematics.kin4(vfy,viy,a));
 		vars.put("t",unknowns.get("t"));
 	    }
 	    else {
 		unknowns.put("t",Kinematics.kin7(dy,a)); //DX OR DY???????????????
 		vars.put("t",unknowns.get("t"));
 	    }
+	    return;
+	}
+	
+	//finding theta
+	else if( theta == null && viy != null && vix != null ) {
+	    unknowns.put("theta",proj5());
+	    vars.put("theta",unknowns.get("theta"));	    
+	    return;
+	}
+	else if( theta == null && vix != null && vi != null ) {
+	    unknowns.put("theta",proj3());
+	    vars.put("theta",unknowns.get("theta"));
+	    return;
+	} 
+	else if( theta == null && viy != null && vi != null ) {
+	    unknowns.put("theta",proj4());
+	    vars.put("theta",unknowns.get("theta"));
+	    return;
 	}
     }
 	
@@ -209,11 +215,8 @@ public class Projectiles extends Question {
 
     public static void main( String[] args ) {
 	Projectiles luke = new Projectiles();
-	if( luke.t == null ) {
-	    System.out.println(luke);
-	    System.out.println(luke.calculate());
-	}
+	System.out.println(luke);
+	System.out.println(luke.calculate());
     }
-    
 } // close class Projectiles
  
