@@ -123,7 +123,7 @@ Continued work with Game.java, started building other subclasses of Question. (W
 2016-01-23
 23:00
 
-Kinematics methods made static and applied to class Projectiles. User input mechanism in Game.java functioning, complete with IOExceptions.
+Kinematics methods made static and applied to class Projectiles. User input mechanism in Game.java functioning, complete with IOExceptions. Class Jedi created (will act similarly to Character in previous RPG assignments).
 -G&A
 
 ==============================================================================
