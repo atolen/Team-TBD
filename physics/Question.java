@@ -1,4 +1,4 @@
-package physics;
+//package physics;
 import java.util.*;
 public abstract class Question {
     
@@ -76,6 +76,10 @@ public abstract class Question {
 
     public static double pythTheorem(double a,double b) { //Pythagorean Theorem
 	return Math.sqrt( Math.pow(a,2) + Math.pow(a,2) );
+    }
+
+    public static double revPythTheorem(double c,double a) { //find leg using Pythagorean Theorem
+	return Math.sqrt(Math.pow(c,2) - Math.pow(a,2));
     }
 
 

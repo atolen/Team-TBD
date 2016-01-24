@@ -1,15 +1,15 @@
+//package story;
 public class Jedi {
-
     private int hp;
     private String name;
 
-    //Constructor
+    //constructor
     public Jedi() {
 	hp = 100;
 	name = "Luke";
     }
 
-    //Accessors
+    //accessors
     public int getHP() {
 	return hp;
     }
@@ -18,7 +18,7 @@ public class Jedi {
 	return name;
     }
 
-    //Modifiers
+    //mutators
     public void setHP(int newHP) {
 	hp = newHP;
     }
@@ -26,5 +26,4 @@ public class Jedi {
     public void setName(String newName) {
 	name = newName;
     }
-
-}//end of class Jedi
+} //end of class Jedi

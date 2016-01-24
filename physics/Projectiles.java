@@ -1,4 +1,4 @@
-package physics;
+//package physics;
 public class Projectiles extends Question {
     private Double dx;//displacement in x direction
     private Double dy;//displacement in y direction
@@ -14,7 +14,7 @@ public class Projectiles extends Question {
     //                    positive x axis used as reference frame
 
     //assume objects don't accelerate in x direction
-    private Double a = new Double(9.81);//acceleration due to gravity -- y direction
+    private Double a = new Double(-9.81);//acceleration due to gravity -- y direction
     
     private Double t;//time
 
@@ -27,7 +27,7 @@ public class Projectiles extends Question {
     
     //constructors
     public Projectiles() {
-	numVars = 9;
+	numVars = 7;
 	populate();
 	dx = vars.get("dx");
 	dy = vars.get("dy");
@@ -41,7 +41,8 @@ public class Projectiles extends Question {
     }
 
     //populate() -- postcond: assigns random values to variables
-    //              values of vix and viy set to the cosine and sine of vi, respectively
+    //              values of vix and viy set to vi times cosine and sine of theta, respectively
+    //              theta set to appropriate value based on vix/viy/vi
     public void populate() {
 	varList.add("dx");
 	varList.add("dy");	
@@ -51,11 +52,14 @@ public class Projectiles extends Question {
 	varList.add("vfy");
 	varList.add("theta");	
 	varList.add("t");
-	varList.add("a");
-	assignVals(0,10,0);
+	assignVals(0,20,0);
+	vars.put("a",a);
 	if( vars.get("vix") != null && vars.get(theta) != null) { vars.put("vix",proj1()); } // set to vcostheta
 	if( vars.get("viy") != null && vars.get(theta) != null) { vars.put("viy",proj2()); } // set to vsintheta
 
+	if( theta != null && vix != null && vi != null ) { vars.put("theta",proj3()); }
+	else if( theta != null && viy != null && vi != null ) { vars.put("theta",proj4()); }
+	else if( theta != null && vix != null && viy != null ) { vars.put("theta",proj5()); }	
     }
 
     
@@ -63,7 +67,7 @@ public class Projectiles extends Question {
     
     //finds rightAns
     public String calculate() {
-       	while( vars.containsValue(null) )
+       	while( vars.containsValue(null) ) 
 	    solve();
 	return unknowns.toString();
     }
@@ -71,7 +75,28 @@ public class Projectiles extends Question {
     public void solve() {
 
 	//finging vi
-	if( vi == null && vix != null && viy != null ) { unknowns.put("vi",pythTheorem(vix,viy)); }
+	if( vi == null ) {
+	    if( vix != null && viy != null ) {
+		unknowns.put("vi",pythTheorem(vix,viy));
+		vars.put("vi",unknowns.get("vi"));
+	    }
+	    else if( vfy != null && t != null ) {
+		unknowns.put("vi",Kinematics.kin3(a,t,vfy));
+		vars.put("vi",unknowns.get("vi"));
+	    }
+
+	    else if( t != null ) {
+		unknowns.put("vi",Kinematics.kin6(dy,a,t));
+		vars.put("vi",unknowns.get("vi"));
+	    }
+
+	    else {
+		unknowns.put("vi",Kinematics.kin10(vfy,a,dy));
+		vars.put("vi",unknowns.get("vi"));
+	    }
+	    return;
+	}
+	
 
 	//finding vix
 	else if( vix == null && vi != null && theta != null ) { unknowns.put("vix",proj1()); }
@@ -85,31 +110,29 @@ public class Projectiles extends Question {
 
 	//finding viy
 	else if( viy == null && vi != null && theta != null ) { unknowns.put("viy",proj2()); }
-	else if( viy == null) {
-	    if( t != null) {
-		if(vfy != null) {
-		    unknowns.put("viy",Kinematics.kin3(a,t,vfy));
-		    vars.put("viy",Kinematics.kin3(a,t,vfy));
-		}
-		else {
-		    unknowns.put("viy",Kinematics.kin6(dy,a,t)); //kin6
-		    vars.put("viy",unknowns.get("viy"));
-		}
+	else if( viy == null ) {
+	    if( t != null && vfy != null ) {
+		unknowns.put("vi",Kinematics.kin3(a,t,vfy));
+		vars.put("vi",unknowns.get("vi"));
+	    }
+	    else if( vfy != null && dy != null ) {
+		unknowns.put("vi",Kinematics.kin10(vfy,a,dy));
+		vars.put("vi",unknowns.get("vi"));
 	    }
 	    else {
-		unknowns.put("viy",Kinematics.kin10(vfy,a,dy)); //kin10
-		vars.put("viy",unknowns.get("viy"));
+		unknowns.put("vi",Kinematics.kin6(dy,a,t));
+		vars.put("vi",unknowns.get("vi"));
 	    }
 	    return;
 	}
-
+	
 	//finding vfy
 	else if( vfy == null ) {
-	    if( t != null ) {
+	    if( t != null && viy != null) {
 		unknowns.put("vfy",Kinematics.kin2(viy,a,t));
 		vars.put("vfy",unknowns.get("vfy"));
 	    }
-	    else {
+	    else if(viy != null && dy != null) {
 		unknowns.put("vfy",Kinematics.kin9(viy,a,dy));
 		vars.put("vfy",unknowns.get("vfy"));
 	    }
@@ -133,13 +156,38 @@ public class Projectiles extends Question {
 	else if( dx == null && vix !=null && t !=null) {
 	    unknowns.put("dx", t*vix);
 	    vars.put("dx",unknowns.get("dx"));
+	    return;
 	}
 
-
+	//finding t
+	else if( t == null ) {
+	    if( vfy != null ) {
+		unknowns.put("t",Kinematics.kin4(vfy,viy,a));
+		vars.put("t",unknowns.get("t"));
+	    }
+	    else {
+		unknowns.put("t",Kinematics.kin7(dy,a)); //DX OR DY???????????????
+		vars.put("t",unknowns.get("t"));
+	    }
+	    return;
+	}
+	
 	//finding theta
-	else if( theta == null && vix != null && vi != null ) { unknowns.put("theta",proj3()); }
-	else if( theta == null && viy != null && vi != null ) { unknowns.put("theta",proj4()); }
-	else if( theta == null && viy != null && vix != null ) { unknowns.put("theta",proj5()); }
+	else if( theta == null && viy != null && vix != null ) {
+	    unknowns.put("theta",proj5());
+	    vars.put("theta",unknowns.get("theta"));	    
+	    return;
+	}
+	else if( theta == null && vix != null && vi != null ) {
+	    unknowns.put("theta",proj3());
+	    vars.put("theta",unknowns.get("theta"));
+	    return;
+	} 
+	else if( theta == null && viy != null && vi != null ) {
+	    unknowns.put("theta",proj4());
+	    vars.put("theta",unknowns.get("theta"));
+	    return;
+	}
     }
 	
     //==========EQUATIONS=============    
@@ -169,7 +217,6 @@ public class Projectiles extends Question {
 	Projectiles luke = new Projectiles();
 	System.out.println(luke);
 	System.out.println(luke.calculate());
-    } 
-    
+    }
 } // close class Projectiles
  
