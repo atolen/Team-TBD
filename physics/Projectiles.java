@@ -1,4 +1,4 @@
-package physics;
+//package physics;
 public class Projectiles extends Question {
     private Double dx;//displacement in x direction
     private Double dy;//displacement in y direction
@@ -14,7 +14,7 @@ public class Projectiles extends Question {
     //                    positive x axis used as reference frame
 
     //assume objects don't accelerate in x direction
-    private Double a = new Double(9.81);//acceleration due to gravity -- y direction
+    private Double a = new Double(-9.81);//acceleration due to gravity -- y direction
     
     private Double t;//time
 
@@ -27,7 +27,7 @@ public class Projectiles extends Question {
     
     //constructors
     public Projectiles() {
-	numVars = 9;
+	numVars = 8;
 	populate();
 	dx = vars.get("dx");
 	dy = vars.get("dy");
@@ -51,8 +51,8 @@ public class Projectiles extends Question {
 	varList.add("vfy");
 	varList.add("theta");	
 	varList.add("t");
-	varList.add("a");
 	assignVals(0,10,0);
+	vars.put("a",a);
 	if( vars.get("vix") != null && vars.get(theta) != null) { vars.put("vix",proj1()); } // set to vcostheta
 	if( vars.get("viy") != null && vars.get(theta) != null) { vars.put("viy",proj2()); } // set to vsintheta
 
@@ -65,6 +65,7 @@ public class Projectiles extends Question {
     public String calculate() {
        	while( vars.containsValue(null) )
 	    solve();
+	//	    System.out.println(unknowns.toString());
 	return unknowns.toString();
     }
   
@@ -105,11 +106,11 @@ public class Projectiles extends Question {
 
 	//finding vfy
 	else if( vfy == null ) {
-	    if( t != null ) {
+	    if( t != null && viy != null) {
 		unknowns.put("vfy",Kinematics.kin2(viy,a,t));
 		vars.put("vfy",unknowns.get("vfy"));
 	    }
-	    else {
+	    else if(viy != null && dy != null) {
 		unknowns.put("vfy",Kinematics.kin9(viy,a,dy));
 		vars.put("vfy",unknowns.get("vfy"));
 	    }
@@ -133,13 +134,20 @@ public class Projectiles extends Question {
 	else if( dx == null && vix !=null && t !=null) {
 	    unknowns.put("dx", t*vix);
 	    vars.put("dx",unknowns.get("dx"));
+	    return;
 	}
 
 
 	//finding theta
-	else if( theta == null && vix != null && vi != null ) { unknowns.put("theta",proj3()); }
-	else if( theta == null && viy != null && vi != null ) { unknowns.put("theta",proj4()); }
-	else if( theta == null && viy != null && vix != null ) { unknowns.put("theta",proj5()); }
+	else if( theta == null && vix != null && vi != null ) {
+	    unknowns.put("theta",proj3());
+	    return;}
+	else if( theta == null && viy != null && vi != null ) {
+	    unknowns.put("theta",proj4());
+	    return;}
+	else if( theta == null && viy != null && vix != null ) {
+	    unknowns.put("theta",proj5());
+	    return;}
     }
 	
     //==========EQUATIONS=============    
@@ -168,6 +176,9 @@ public class Projectiles extends Question {
     public static void main( String[] args ) {
 	Projectiles luke = new Projectiles();
 	System.out.println(luke);
+	/*	if( luke.vfy == null ) {
+	    System.out.println(Kinematics.kin2(luke.viy,luke.a,luke.t));
+	    }*/
 	System.out.println(luke.calculate());
     } 
     
