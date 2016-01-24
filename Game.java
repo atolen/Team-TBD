@@ -158,6 +158,27 @@ public class Game {
 	}
     }//end of getUserAnswer
 
+    //wrongAns() allows user to override game
+    public void wrongAns() {
+	System.out.println("Your answer does not match. Would you like to proceed \"unharmed\"?(y/n)");
+	String temp = "";
+	try {
+	    temp = in.readLine();
+	}
+	catch( IOException e) {}
+
+	if (temp.equals("n")) {
+	    luke.setHP(luke.getHP() - 10);
+	}
+	else if (temp.equals("y")) {
+	    return;
+	}
+	else {
+	    System.out.println("Invalid input");
+	    wrongAns();
+	}
+    }//end of wrongAns()
+
     //getName() gets name of user for Jedi
     public void name() {
 	try {
