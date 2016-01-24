@@ -10,8 +10,8 @@ public class Projectiles extends Question {
     //assume objects don't accelerate in x direction
     private Double vfy;//final velocity -- y direction
 
-    private Double angle;//angle at which object is thrown
-    //                   positive x axis used as reference frame
+    private Double theta;//angle at which object is thrown
+    //                    positive x axis used as reference frame
 
     //assume objects don't accelerate in x direction
     private Double a = new Double(9.81);//acceleration due to gravity -- y direction
@@ -35,7 +35,7 @@ public class Projectiles extends Question {
 	vix = vars.get("vix");
 	viy = vars.get("viy");
 	vfy = vars.get("vfy");
-	angle = vars.get("angle");
+	theta = vars.get("theta");
 	a = vars.get("a");
 	t = vars.get("t");
     }
@@ -49,12 +49,12 @@ public class Projectiles extends Question {
 	varList.add("vix");
 	varList.add("viy");
 	varList.add("vfy");
-	varList.add("angle");	
+	varList.add("theta");	
 	varList.add("t");
 	varList.add("a");
 	assignVals(0,10,0);
-	if( vars.get("vix") != null && vars.get(angle) != null) { vars.put("vix",proj1()); } // set to vcostheta
-	if( vars.get("viy") != null && vars.get(angle) != null) { vars.put("viy",proj2()); } // set to vsintheta
+	if( vars.get("vix") != null && vars.get(theta) != null) { vars.put("vix",proj1()); } // set to vcostheta
+	if( vars.get("viy") != null && vars.get(theta) != null) { vars.put("viy",proj2()); } // set to vsintheta
 
     }
 
@@ -69,18 +69,36 @@ public class Projectiles extends Question {
     }
   
     public void solve() {
-	if( vix == null && vi != null && angle != null ) { unknowns.put("vix",proj1()); }
-	if( viy == null && vi != null && angle != null ) { unknowns.put("viy",proj2()); }
-	if( vi == null && vix != null && viy != null ) { unknowns.put("vi",pythTheorem(vix,viy)); }
+	if( vix == null && vi != null && theta != null ) { unknowns.put("vix",proj1()); }
+	else if( viy == null && vi != null && theta != null ) { unknowns.put("viy",proj2()); }
+	else if( vi == null && vix != null && viy != null ) { unknowns.put("vi",pythTheorem(vix,viy)); }
+	else if( theta == null && vix != null && vi != null ) { unknowns.put("theta",proj3()); }
+	else if( theta == null && viy != null && vi != null ) { unknowns.put("theta",proj4()); }
+	else if( theta == null && viy != null && vix != null ) { unknowns.put("theta",proj5()); }
+    }
 	
     
     public double proj1() { //find vix
-	return vi*Math.cos(angle);
+	return vi*Math.cos(theta);
     }
 
     public double proj2() { //find viy
-	return vi*Math.sin(angle);
+	return vi*Math.sin(theta);
     }
+
+    public double proj3() { //find theta >> vix, vi known
+	return acos(vix/vi); //arccos
+    }
+
+    public double proj4() { //find theta >> viy,vi known
+	return asin(viy/vi); //arcsin
+    }
+
+    public double proj5() { //find theta >> viy,vix known
+	atan(viy/vix); //arctan
+    }
+
+    
 
     public static void main( String[] args ) {
 	Projectiles luke = new Projectiles();
