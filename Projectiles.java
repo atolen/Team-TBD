@@ -1,4 +1,3 @@
-//package physics;
 public class Projectiles extends Question {
     private Double dx;//displacement in x direction
     private Double dy;//displacement in y direction
@@ -109,19 +108,24 @@ public class Projectiles extends Question {
 	}
 
 	//finding viy
+<<<<<<< HEAD:Projectiles.java
+	else if( viy == null && vi != null && theta != null ) { System.out.println(0); unknowns.put("viy",proj2(vi,theta)); }
+=======
 	else if( viy == null && vi != null && theta != null ) { unknowns.put("viy",proj2()); }
+>>>>>>> 8a18c147cd27d75197f72c7356a5916a26980986:Projectiles.java
 	else if( viy == null ) {
 	    if( t != null && vfy != null ) {
-		unknowns.put("vi",Kinematics.kin3(a,t,vfy));
-		vars.put("vi",unknowns.get("vi"));
+		System.out.println(1);
+		unknowns.put("viy",Kinematics.kin3(a,t,vfy));
+		vars.put("viy",unknowns.get("vi"));
 	    }
 	    else if( vfy != null && dy != null ) {
-		unknowns.put("vi",Kinematics.kin10(vfy,a,dy));
-		vars.put("vi",unknowns.get("vi"));
+		unknowns.put("viy",Kinematics.kin10(vfy,a,dy));
+		vars.put("viy",unknowns.get("viy"));
 	    }
 	    else {
-		unknowns.put("vi",Kinematics.kin6(dy,a,t));
-		vars.put("vi",unknowns.get("vi"));
+		unknowns.put("viy",Kinematics.kin6(dy,a,t));
+		vars.put("viy",unknowns.get("viy"));
 	    }
 	    return;
 	}
@@ -215,8 +219,17 @@ public class Projectiles extends Question {
 
     public static void main( String[] args ) {
 	Projectiles luke = new Projectiles();
+	while( luke.viy != null ) {
+	    luke = new Projectiles();
+	}
 	System.out.println(luke);
+<<<<<<< HEAD:Projectiles.java
+	
 	System.out.println(luke.calculate());
+	
+=======
+	System.out.println(luke.calculate());
+>>>>>>> 8a18c147cd27d75197f72c7356a5916a26980986:Projectiles.java
     }
 } // close class Projectiles
  
