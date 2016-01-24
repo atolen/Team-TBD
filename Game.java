@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.*;
-import physics.*;
 
 public class Game {
 
@@ -17,7 +16,7 @@ public class Game {
     public final static int cirQs = 2; // Circular
 
     private boolean gameOver; // hp at 0? answer all questions?
-    private ArrayList[] find; // what must the user find?
+    private ArrayList<String> find = new ArrayList<String>(); // what must the user find?
     private double userAns; // holds user answer
 
     private InputStreamReader isr;
@@ -131,28 +130,35 @@ public class Game {
 
     //fingFind() finds what the user has to find
     public String findFind(Question ques) {
-	for(String key : ques.unknowns.keyset()) {
+	for(String key : ques.unknowns.keySet()) {
 	    find.add(key);
 	}
-	return find;
+	String ret = "";
+	for(String s : find) {
+	    ret += s + " ";
+	}
+	return ret;
     }//end of findFind()
 
     //compareAnswer() checks if input answer is deemed "close enough"
-    public String compareAnswer(Question ans) {
+    public boolean compareAnswer(Question q, String key) {
+	    return Question.compare(userAns, q, key);
     }//end of compareAnswer()
 
     //getAnswer() gets the inputed answer to question
-    public void getUserAnswer() {
-	for (String key : find) {
-	    System.out.print(key + ": ");
+    public void getUserAnswer(Question q) {
+	for (int i = 0; i < find.size(); i++) {
+	    System.out.print(find.get(i) + ": ");
 	    try {
 		userAns = Double.parseDouble( in.readLine() );
 	    }
 	    catch (IOException e) {}
+	    boolean isRight = compareAnswer(q, find.get(i));
+	    if(!isRight ) {}
+	}
     }//end of getUserAnswer
 
     //getName() gets name of user for Jedi
-    
     public void name() {
 	try {
 	    luke.setName( in.readLine() );
@@ -164,6 +170,8 @@ public class Game {
 	while(kinQs > 0) {
 	    Kinematics q = new Kinematics();
 	    findFind(q);
+	    System.out.println(q.vars);
+	    getUserAnswer(q);
 	}
     }//enf of kinSec
 
