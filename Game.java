@@ -131,9 +131,26 @@ prt +=
 "\n/_        \\o========o/        _\\           " +
 "\n  `--...__|`-._  _.-'|__...--'             " +
 "\n          |    `'    |                     " +
-"\n";
+"\n\n";
 System.out.print( prt );
-pause(20000);
+pause(15000);
+
+prt = "brutally interrogating the crew and ordering his stormtroopers to search the ship for the secret documents he believes it is carrying: the technical readouts for the Empire’s mightiest weapon—a planet-sized battle station called the Death Star. In the confusion, Princess Leia slips away and hides the secret documents, as well as a recorded plea for help, in the memory of R2-D2, a maintenance droid.Leia is taken prisoner, but R2 gets away in an escape pod, along with his best friend, the protocol droid C-3PO.\n";
+prt +=
+                                     /~\
+    |oo )
+                                    _\=/_
+                    ___            /  _  \
+	/() \          //|/.\|\\
+                 _|_____|_        \\ \_/  ||
+                | | === | |        \|\ /| ||
+                |_|  O  |_|        # _ _/ #
+                 ||  O  ||          | | |
+                 ||__*__||          | | |
+                |~ \___/ ~|         []|[]
+                /=\ /=\ /=\         | | |
+________________[_]_[_]_[_]________/_]_[_\_";
+
     }//end of newGame()
     //====================================================
 
