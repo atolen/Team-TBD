@@ -8,12 +8,7 @@ public class Game {
     
     //change these constants to choose which topics to focus on
     public final static int kinQs = 2; // Kinematics
-    public final static int motQs = 2; // Motion
     public final static int proQs = 2; // Projectiles
-    public final static int forQs = 2; // Force
-    public final static int momQs = 2; // Momentum
-    public final static int eneQs = 2; // Energy
-    public final static int cirQs = 2; // Circular
 
     private boolean gameOver; // hp at 0? answer all questions?
     private ArrayList<String> find = new ArrayList<String>(); // what must the user find?
@@ -116,6 +111,29 @@ public class Game {
 
 	System.out.println("Good luck! May the Force be with you.");
 	//================END OF INTRO================
+	//==================THE MEAT==================
+
+	prt = "\nFar off in a distant galaxy, the starship belonging to Princess Leia, a young member of the Imperial Senate,\n @-_-@ \n";
+	prt += " is intercepted in the course of a secret mission by a massive Imperial Star Destroyer. An imperial boarding party blasts its way onto the captured vessel, and after a fierce firefight the crew of Leia’s ship is subdued.\n";
+	prt += "The dark, forbidding figure of Darth Vader appears\n";
+prt += "
+\n         _.-'~~~~~~`-._                                                    
+\n        /      ||      \                                                   
+\n       /       ||       \   
+\n      |        ||        |  
+\n      | _______||_______ |                                                 
+\n      |/ ----- \/ ----- \|                                                 
+\n     /  (     )  (     )  \                                                
+\n    / \  ----- () -----  / \                                               
+\n   /   \      /||\      /   \                                              
+\n  /     \    /||||\    /     \   
+\n /       \  /||||||\  /       \                                            
+\n/_        \o========o/        _\                                           
+\n  `--...__|`-._  _.-'|__...--'                                             
+\n          |    `'    |           
+\n";
+System.out.print( prt );
+pause(20000);
     }//end of newGame()
     //====================================================
 
