@@ -72,7 +72,28 @@ public class Projectiles extends Question {
     public void solve() {
 
 	//finging vi
-	if( vi == null && vix != null && viy != null ) { unknowns.put("vi",pythTheorem(vix,viy)); }
+	if( vi == null ) {
+	    if( vix != null && viy != null ) {
+		unknowns.put("vi",pythTheorem(vix,viy));
+		vars.put("vi",unknowns.get("vi"));
+	    }
+	    else if( vfy != null && t != null ) {
+		unknowns.put("vi",Kinematics.kin3(a,t,vfy));
+		vars.put("vi",unknowns.get("vi"));
+	    }
+
+	    else if( t != null ) {
+		unknowns.put("vi",Kinematics.kin6(dy,a,t));
+		vars.put("vi",unknowns.get("vi"));
+	    }
+
+	    else {
+		unknowns.put("vi",Kinematics.kin10(vfy,a,dy));
+		vars.put("vi",unknowns.get("vi"));
+	    }
+	    return;
+	}
+	
 
 	//finding vix
 	else if( vix == null && vi != null && theta != null ) { unknowns.put("vix",proj1()); }
@@ -175,11 +196,10 @@ public class Projectiles extends Question {
 
     public static void main( String[] args ) {
 	Projectiles luke = new Projectiles();
-	System.out.println(luke);
-	/*	if( luke.vfy == null ) {
-	    System.out.println(Kinematics.kin2(luke.viy,luke.a,luke.t));
-	    }*/
-	System.out.println(luke.calculate());
+	if( luke.vi == null ) {
+	    System.out.println(luke);
+	    System.out.println(luke.calculate());
+	}
     } 
     
 } // close class Projectiles
