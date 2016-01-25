@@ -193,7 +193,6 @@ kinSec();
 if (gameOver) {
     playAgain();
 }
-
 //=====================================================
 
 /*prt = "Congrats! You are able to defend yourself by sensing with feelings alone, thereby taking your first steps, as Ben says, into “a larger world.” The ship exits hyperspace where Alderaan should be, only to find the planet missing and an asteroid field in its place. Ben realizes the horrible truth when they catch sight of the nearby Death Star, and the Millennium Falcon is quickly captured. The group manages to hide from the guards in Han’s smuggling compartments, but Vader senses the presence of his old master, Obi-Wan.\n";
@@ -220,10 +219,11 @@ if (gameOver) {
 }
 
 //==============================================
-
-prt = "Against all odds (3720:1), you succeed and destroy the Death Star, dealing a major defeat to the Empire. Now you are on the path to becoming a Jedi Knight, and mastering the remaining topics in physics.";
-System.out.println(prt);
-pause(1500);
+if( !gameOver ) {
+    prt = "Against all odds (3720:1), you succeed and destroy the Death Star, dealing a major defeat to the Empire. Now you are on the path to becoming a Jedi Knight, and mastering the remaining topics in physics.";
+    System.out.println(prt);
+    pause(1500);
+}
 
 System.out.println("\nTO BE CONTINUED");
 
@@ -234,7 +234,7 @@ System.out.println("\nTO BE CONTINUED");
 	System.out.println("\nWould you like to play again? (y/n)");
 	boolean b = getYN();
 	if( b ) { newGame(); }
-	else if( !b ) { System.out.println("Then it has come time for us to part. I wish you luck, young padawan. May the Force be with you."); }
+	else if( !b ) { System.out.println("Then it has come time for us to part. I wish you luck, " + luke.getName() +". May the Force be with you."); }
     }
     
     public void gameOver() {
@@ -270,7 +270,6 @@ System.out.println("\nTO BE CONTINUED");
 
     //getAnswer() gets the inputed answer to question
     public void getUserAnswer(Question q) {
-	//	System.out.println(findFind(q));
 	for(int i = 0; i < find.size(); i++) {
 	    System.out.print(find.get(i) + ": ");
 	    try {
@@ -280,6 +279,9 @@ System.out.println("\nTO BE CONTINUED");
 	    boolean isRight = compareAnswer(q,find.get(i));
 	    if( !isRight ) {
 		wrongAns();
+	    }
+	    else {
+		System.out.println("Correct!");
 	    }
 	}
     }//end of getUserAnswer
