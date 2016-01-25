@@ -70,7 +70,7 @@ public abstract class Question {
 
     //compare() -- returns true if user input within 15% of computer-generated answer
     public static boolean compare(double userAns, Question quesAns, String key) {
-	return (quesAns.unknowns.get(key) * 1.15 >= userAns && quesAns.unknowns.get(key) * 0.85 <= userAns);
+	return (quesAns.vars.get(key) * 1.15 >= userAns && quesAns.vars.get(key) * 0.85 <= userAns);
     }
 
     public static double pythTheorem(double a,double b) { //Pythagorean Theorem
