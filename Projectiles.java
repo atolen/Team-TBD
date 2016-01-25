@@ -53,12 +53,12 @@ public class Projectiles extends Question {
 	varList.add("t");
 	assignVals(0,20,0);
 	vars.put("a",a);
-	if( vars.get("vix") != null && vars.get(theta) != null) { vars.put("vix",proj1()); } // set to vcostheta
-	if( vars.get("viy") != null && vars.get(theta) != null) { vars.put("viy",proj2()); } // set to vsintheta
+	if( vars.get("vix") != null && vars.get(theta) != null) { vars.put("vix",proj1(vi,theta)); } // set to vcostheta
+	if( vars.get("viy") != null && vars.get(theta) != null) { vars.put("viy",proj2(vi,theta)); } // set to vsintheta
 
-	if( theta != null && vix != null && vi != null ) { vars.put("theta",proj3()); }
-	else if( theta != null && viy != null && vi != null ) { vars.put("theta",proj4()); }
-	else if( theta != null && vix != null && viy != null ) { vars.put("theta",proj5()); }	
+	if( theta != null && vix != null && vi != null ) { vars.put("theta",proj3(vix,vi)); }
+	else if( theta != null && viy != null && vi != null ) { vars.put("theta",proj4(viy,vi)); }
+	else if( theta != null && vix != null && viy != null ) { vars.put("theta",proj5(viy,vix)); }	
     }
 
     
@@ -98,9 +98,12 @@ public class Projectiles extends Question {
 	
 
 	//finding vix
-	else if( vix == null && vi != null && theta != null ) { unknowns.put("vix",proj1()); }
+	else if( vix == null && vi != null && theta != null ) {
+	    unknowns.put("vix",proj1(vi,theta));
+	    vars.put("vix",unknowns.get("vix"));
+	}
 	else if( vix == null ) {
-	    if( t != null && dx != null) {
+	    if( t != null && dx != null ) {
 		unknowns.put("vix",dx/t);
 		vars.put("vix",unknowns.get("vix"));
 	    }
@@ -108,16 +111,19 @@ public class Projectiles extends Question {
 	}
 
 	//finding viy
-<<<<<<< HEAD:Projectiles.java
-	else if( viy == null && vi != null && theta != null ) { System.out.println(0); unknowns.put("viy",proj2(vi,theta)); }
-=======
-	else if( viy == null && vi != null && theta != null ) { unknowns.put("viy",proj2()); }
->>>>>>> 8a18c147cd27d75197f72c7356a5916a26980986:Projectiles.java
+
+	else if( viy == null && vi != null && theta != null ) {
+	    unknowns.put("viy",proj2(vi,theta));
+	    vars.put("viy",unknowns.get("viy"));
+	    return;
+	}
+
+	//	else if( viy == null && vi != null && theta != null ) { unknowns.put("viy",proj2()); }
+
 	else if( viy == null ) {
 	    if( t != null && vfy != null ) {
-		System.out.println(1);
 		unknowns.put("viy",Kinematics.kin3(a,t,vfy));
-		vars.put("viy",unknowns.get("vi"));
+		vars.put("viy",unknowns.get("viy"));
 	    }
 	    else if( vfy != null && dy != null ) {
 		unknowns.put("viy",Kinematics.kin10(vfy,a,dy));
@@ -170,7 +176,7 @@ public class Projectiles extends Question {
 		vars.put("t",unknowns.get("t"));
 	    }
 	    else {
-		unknowns.put("t",Kinematics.kin7(dy,a)); //DX OR DY???????????????
+		unknowns.put("t",Kinematics.kin7(dy,a)); 
 		vars.put("t",unknowns.get("t"));
 	    }
 	    return;
@@ -178,40 +184,40 @@ public class Projectiles extends Question {
 	
 	//finding theta
 	else if( theta == null && viy != null && vix != null ) {
-	    unknowns.put("theta",proj5());
+	    unknowns.put("theta",proj5(viy,vix));
 	    vars.put("theta",unknowns.get("theta"));	    
 	    return;
 	}
 	else if( theta == null && vix != null && vi != null ) {
-	    unknowns.put("theta",proj3());
+	    unknowns.put("theta",proj3(vix,vi));
 	    vars.put("theta",unknowns.get("theta"));
 	    return;
 	} 
 	else if( theta == null && viy != null && vi != null ) {
-	    unknowns.put("theta",proj4());
+	    unknowns.put("theta",proj4(viy,vi));
 	    vars.put("theta",unknowns.get("theta"));
 	    return;
 	}
     }
 	
     //==========EQUATIONS=============    
-    public double proj1() { //find vix
+    public static double proj1(double vi,double theta) { //find vix
 	return vi*Math.cos(Math.toRadians(theta));
     }
 
-    public double proj2() { //find viy
+    public static double proj2(double vi,double theta) { //find viy
 	return vi*Math.sin(Math.toRadians(theta));
     }
 
-    public double proj3() { //find theta >> vix, vi known
+    public static double proj3(double vix,double vi) { //find theta >> vix, vi known
 	return Math.toDegrees(Math.acos(vix/vi)); //arccos
     }
 
-    public double proj4() { //find theta >> viy,vi known
+    public static double proj4(double viy,double vi) { //find theta >> viy,vi known
 	return Math.toDegrees(Math.asin(viy/vi)); //arcsin
     }
 
-    public double proj5() { //find theta >> viy,vix known
+    public static double proj5(double viy,double vix) { //find theta >> viy,vix known
 	return Math.toDegrees(Math.atan(viy/vix)); //arctan
     }
     //============================================
@@ -219,17 +225,11 @@ public class Projectiles extends Question {
 
     public static void main( String[] args ) {
 	Projectiles luke = new Projectiles();
-	while( luke.viy != null ) {
+	while( luke.vix != null ) {
 	    luke = new Projectiles();
 	}
 	System.out.println(luke);
-<<<<<<< HEAD:Projectiles.java
-	
 	System.out.println(luke.calculate());
-	
-=======
-	System.out.println(luke.calculate());
->>>>>>> 8a18c147cd27d75197f72c7356a5916a26980986:Projectiles.java
     }
 } // close class Projectiles
  
