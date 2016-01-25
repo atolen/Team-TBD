@@ -1,4 +1,3 @@
-//package physics;
 public class Kinematics extends Question {
     private Double d;//displacement
     private Double vi;//init velocity
