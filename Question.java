@@ -7,6 +7,16 @@ public abstract class Question {
     protected Map<String,Double> unknowns = new HashMap(); // stores unknows + correct answers, to later compare w/ user input
     protected Map<String,Double> userInput = new HashMap(); // user's answer to question
 
+    public String toString() {
+	String retStr = "Given information:\n";
+	for( String key : vars.keySet() ) {
+	    if( vars.get(key) != null ) {
+		retStr += key + ": " + vars.get(key) + "\t";
+	    }
+	}
+	return retStr;
+    }
+    
     //manually populates Map "vars" w/ class-specific instance vars
     public abstract void populate();
 	    

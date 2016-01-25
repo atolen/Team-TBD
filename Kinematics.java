@@ -5,10 +5,6 @@ public class Kinematics extends Question {
     private Double a;//acceleration
     private Double t;//time
       
-    public String toString() {
-	return vars.toString();
-    }
-    
     // constructors
     public Kinematics() {
 	numVars = 5;

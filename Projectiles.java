@@ -20,10 +20,6 @@ public class Projectiles extends Question {
     
     //========================METHODS========================
     
-    public String toString() {
-	return vars.toString();
-    }
-    
     //constructors
     public Projectiles() {
 	numVars = 7;
