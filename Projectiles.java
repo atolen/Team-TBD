@@ -111,14 +111,11 @@ public class Projectiles extends Question {
 	}
 
 	//finding viy
-
 	else if( viy == null && vi != null && theta != null ) {
 	    unknowns.put("viy",proj2(vi,theta));
 	    vars.put("viy",unknowns.get("viy"));
 	    return;
 	}
-
-	//	else if( viy == null && vi != null && theta != null ) { unknowns.put("viy",proj2()); }
 
 	else if( viy == null ) {
 	    if( t != null && vfy != null ) {
