@@ -99,15 +99,15 @@ public class Game {
 	pause(1000);
 
 	prt = "You are about to embark on a journey throughout the galaxy, learning the ways of the Force and other vectors to battle the Empire.\n";
-	prt += "In order to proceed and follow your destiny to become a physics BOSS, you must apply the laws of the universe,also known as mechanical equations, to every given scenario, and find the missing componenet correctly.\n";
+	prt += "In order to proceed and follow your destiny to become a physics BOSS, you must apply the laws of the universe, (aka mechanical equations), in every given scenario, and find the missing componenet correctly.\n";
 	System.out.print( prt + "\n" );
-	pause(10000);
+	pause(15000);
 
 	prt = "PLEASE NOTE: The point of this game is to help people practice physics!\n";
 	prt += "If for some reason our program gives you the wrong answer, you have the option of overriding it.\n";
 	prt += "But have caution! The practice is for your own good, so the only person who will suffer most certain death is not you the Jedi, but you the student.\n";
 	System.out.print( prt + "\n" );
-	pause(10000);
+	pause(15000);
 
 	System.out.println("Good luck! May the Force be with you.");
 	//================END OF INTRO================
@@ -116,22 +116,22 @@ public class Game {
 	prt = "\nFar off in a distant galaxy, the starship belonging to Princess Leia, a young member of the Imperial Senate,\n @-_-@ \n";
 	prt += " is intercepted in the course of a secret mission by a massive Imperial Star Destroyer. An imperial boarding party blasts its way onto the captured vessel, and after a fierce firefight the crew of Leia’s ship is subdued.\n";
 	prt += "The dark, forbidding figure of Darth Vader appears\n";
-prt += "
-\n         _.-'~~~~~~`-._                                                    
-\n        /      ||      \                                                   
-\n       /       ||       \   
-\n      |        ||        |  
-\n      | _______||_______ |                                                 
-\n      |/ ----- \/ ----- \|                                                 
-\n     /  (     )  (     )  \                                                
-\n    / \  ----- () -----  / \                                               
-\n   /   \      /||\      /   \                                              
-\n  /     \    /||||\    /     \   
-\n /       \  /||||||\  /       \                                            
-\n/_        \o========o/        _\                                           
-\n  `--...__|`-._  _.-'|__...--'                                             
-\n          |    `'    |           
-\n";
+prt += 
+"\n         _.-'~~~~~~`-._                    " +
+"\n        /      ||      \\                   " + 
+"\n       /       ||       \\                  " +
+"\n      |        ||        |                 " +
+"\n      | _______||_______ |                 " + 
+"\n      |/ ----- \\/ ----- \\|                 " +
+"\n     /  (     )  (     )  \\                " +
+"\n    / \\  ----- () -----  / \\               " +
+"\n   /   \\      /||\\      /   \\              " +
+"\n  /     \\    /||||\\    /     \\             " +
+"\n /       \\  /||||||\\  /       \\            " +
+"\n/_        \\o========o/        _\\           " +
+"\n  `--...__|`-._  _.-'|__...--'             " +
+"\n          |    `'    |                     " +
+"\n";
 System.out.print( prt );
 pause(20000);
     }//end of newGame()
