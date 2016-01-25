@@ -13,6 +13,7 @@ public class Kinematics extends Question {
     public Kinematics() {
 	numVars = 5;
 	populate();
+	getNulls();
 	d = vars.get("d");
 	vi = vars.get("vi");
 	vf = vars.get("vf");
@@ -32,10 +33,16 @@ public class Kinematics extends Question {
 
     
     //========================CALCULATOR========================
-
+    
+    //populates unknowns w/ appropriate keys
+    public void getNulls() {
+	for( String s : vars.keySet() ) {
+	    if( vars.get(s) == null ) { unknowns.put(s,null); }
+	}
+    }
     //finds rightAns
     public String calculate() {
-       	while( vars.containsValue(null)) 
+       	while( vars.containsValue(null) ) 
 	    solve();
 	return unknowns.toString();
     }
@@ -186,7 +193,9 @@ public class Kinematics extends Question {
     public static void main( String[] args ) {
 	Kinematics luke = new Kinematics();
 	System.out.println(luke);
+	System.out.println(luke.unknowns);	
 	System.out.println(luke.calculate());
+	System.out.println(luke.unknowns);
     }
     
 } // close class Kinematics

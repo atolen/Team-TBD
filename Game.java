@@ -14,6 +14,9 @@ public class Game {
     private ArrayList<String> find = new ArrayList<String>(); // what must the user find?
     private double userAns; // holds user answer
 
+    private int hintCount = 0;
+    private final int hintCap = 5;
+
     private InputStreamReader isr;
     private BufferedReader in;
 
@@ -31,7 +34,7 @@ public class Game {
 	//==============INTRODUCTION=====================
 	prt = "\n";
 	System.out.print( prt );
-
+	/*
 	pause(1000);
 
 	prt = "\t\tA long time ago in a galaxy far,\n\t\tfar away...\n\n";
@@ -99,7 +102,7 @@ public class Game {
 	pause(1000);
 
 	prt = "You are about to embark on a journey throughout the galaxy, learning the ways of the Force and other vectors to battle the Empire.\n";
-	prt += "In order to proceed and follow your destiny to become a physics BOSS, you must apply the laws of the universe, (aka mechanical equations), in every given scenario, and find the missing componenet correctly.\n";
+	prt += "In order to proceed and follow your destiny to become a physics BOSS, you must apply the laws of the universe (mechanical equations) in every given scenario, and find the missing component correctly.\n";
 	System.out.print( prt + "\n" );
 	pause(15000);
 
@@ -107,12 +110,14 @@ public class Game {
 	prt += "If for some reason our program gives you the wrong answer, you have the option of overriding it.\n";
 	prt += "But have caution! The practice is for your own good, so the only person who will suffer most certain death is not you the Jedi, but you the student.\n";
 	System.out.print( prt + "\n" );
-	pause(15000);
+	pause(5000);
 
-	System.out.println("Good luck! May the Force be with you.");
+	System.out.println("Good luck! May the Force be with you."); */
 	//================END OF INTRO================
+	kinSec();
+	
 	//==================THE MEAT==================
-
+	/*
 	prt = "\nFar off in a distant galaxy, the starship belonging to Princess Leia, a young member of the Imperial Senate,\n @-_-@ \n";
 	prt += " is intercepted in the course of a secret mission by a massive Imperial Star Destroyer. An imperial boarding party blasts its way onto the captured vessel, and after a fierce firefight the crew of Leia’s ship is subdued.\n";
 	prt += "The dark, forbidding figure of Darth Vader appears\n";
@@ -133,24 +138,28 @@ prt +=
 "\n          |    `'    |                     " +
 "\n\n";
 System.out.print( prt );
-pause(15000);
+pause(2000);
 
 prt = "brutally interrogating the crew and ordering his stormtroopers to search the ship for the secret documents he believes it is carrying: the technical readouts for the Empire’s mightiest weapon—a planet-sized battle station called the Death Star. In the confusion, Princess Leia slips away and hides the secret documents, as well as a recorded plea for help, in the memory of R2-D2, a maintenance droid.Leia is taken prisoner, but R2 gets away in an escape pod, along with his best friend, the protocol droid C-3PO.\n";
-prt +=
-                                     /~\
-    |oo )
-                                    _\=/_
-                    ___            /  _  \
-	/() \          //|/.\|\\
-                 _|_____|_        \\ \_/  ||
-                | | === | |        \|\ /| ||
-                |_|  O  |_|        # _ _/ #
-                 ||  O  ||          | | |
-                 ||__*__||          | | |
-                |~ \___/ ~|         []|[]
-                /=\ /=\ /=\         | | |
-________________[_]_[_]_[_]________/_]_[_\_";
-
+prt += 
+"                  .-.                                \n" +
+"                 /_ _\\                              \n" +
+"                 |o^o|                               \n" +
+"                 \\ _ /                              \n" +
+"                .-'-'-.                              \n" +
+"              /`)  .  (`\\                           \n" +
+"             / /|.-'-.|\\ \\                         \n" +
+"             \\ \\| (_) |/ /  .-\"\"-.               \n" +
+"              \\_\\'-.-'/_/  /[] _ _\\               \n" +
+"              /_/ \\_/ \\_\\ _|_o_LII|_              \n" +
+"                |'._.'|  / | ==== | \\               \n" +
+"                |  |  |  |_| ==== |_|                \n" +
+"                 \\_|_/    ||\" ||  ||               \n" +
+"                 |-|-|    ||LI  o ||                 \n" +
+"                 |_|_|    ||'----'||                 \n" +
+"                /_/ \\_\\  /__|    |__\\             ";
+System.out.println(prt);
+pause(1500); */
     }//end of newGame()
     //====================================================
 
@@ -158,14 +167,15 @@ ________________[_]_[_]_[_]________/_]_[_\_";
     public static void pause(int time) {
 	try {
 	    Thread.sleep(time);//time in milliseconds
-	} catch(InterruptedException ex) {
+	} catch(InterruptedException e) {
 	    Thread.currentThread().interrupt();
 	}
     }//end of pause()
 
     //fingFind() finds what the user has to find
     public String findFind(Question ques) {
-	for(String key : ques.unknowns.keySet()) {
+	Set<String> poo = ques.unknowns.keySet();
+	for(String key : poo) {
 	    find.add(key);
 	}
 	String ret = "";
@@ -177,37 +187,40 @@ ________________[_]_[_]_[_]________/_]_[_\_";
 
     //compareAnswer() checks if input answer is deemed "close enough"
     public boolean compareAnswer(Question q, String key) {
-	    return Question.compare(userAns, q, key);
+	if( q instanceof Kinematics ) { ((Kinematics)q).calculate(); }
+	else if( q instanceof Projectiles) { ((Projectiles)q).calculate(); }
+	return Question.compare(userAns, q, key);
     }//end of compareAnswer()
 
     //getAnswer() gets the inputed answer to question
     public void getUserAnswer(Question q) {
-	for (int i = 0; i < find.size(); i++) {
+	//	findFind(q);
+	for(int i = 0; i <= find.size(); i++) {
 	    System.out.print(find.get(i) + ": ");
 	    try {
 		userAns = Double.parseDouble( in.readLine() );
 	    }
 	    catch (IOException e) {}
-	    boolean isRight = compareAnswer(q, find.get(i));
-	    if(!isRight ) {}
+	    boolean isRight = compareAnswer(q,find.get(i));
+	    if( !isRight ) {
+		wrongAns();
+	    }
 	}
     }//end of getUserAnswer
-
-    //wrongAns() allows user to override game
+	   
+    //wrongAns() allows user to override game & deducts HP 
     public void wrongAns() {
-	System.out.println("Your answer does not match. Would you like to proceed \"unharmed\"?(y/n)");
+	System.out.println("Your answer does not match. Would you like to proceed unharmed? (y/n)");
 	String temp = "";
 	try {
 	    temp = in.readLine();
 	}
-	catch( IOException e) {}
+	catch( IOException e ) {}
 
-	if (temp.equals("n")) {
+	if((temp.toLowerCase()).equals("n") || (temp.toLowerCase()).equals("no")) {
 	    luke.setHP(luke.getHP() - 10);
 	}
-	else if (temp.equals("y")) {
-	    return;
-	}
+	else if((temp.toLowerCase()).equals("y") || (temp.toLowerCase()).equals("yes")) {}
 	else {
 	    System.out.println("Invalid input");
 	    wrongAns();
@@ -223,17 +236,27 @@ ________________[_]_[_]_[_]________/_]_[_\_";
     }//end of name()
 
     public void kinSec() { //calls Kinematics questions
-	while(kinQs > 0) {
-	    Kinematics q = new Kinematics();
+	for( int c = 0; c < kinQs; c++ ) {
+	    Question q = new Kinematics();
 	    findFind(q);
 	    System.out.println(q.vars);
 	    getUserAnswer(q);
 	}
-    }//enf of kinSec
+    }//end of kinSec
+
+    public void projSec() { //calls Projectiles questions
+	for( int c = 0; c < proQs; c++ ) {
+	    Question q = new Projectiles();
+	    findFind(q);
+	    System.out.println(q.vars);
+	    getUserAnswer(q);
+	}
+    }//end of projSec
 
     public static void main(String[] args) {
 	Game game = new Game();
 	game.newGame();
+
     }//end of main
 
 }//end of Driver
