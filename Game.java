@@ -190,7 +190,7 @@ System.out.print(prt);
 */
 //=======================KINEMATICS=====================
 kinSec();
-if (gameOver) {
+if(gameOver) {
     playAgain();
 }
 //=====================================================
@@ -290,14 +290,7 @@ System.out.println("\nTO BE CONTINUED");
     public void wrongAns() {
 	System.out.println("Your answer does not match. Would you like to proceed unharmed? (y/n)");
 	boolean b = getYN();
-	//	String t = getYN().toLowerCase();
-	/*boolean b = true;
-	if( t.equals("n") || t.equals("no")) { b = false; }
-	else if( t.equals("y") || t.equals("yes")) { b = true; }
-	else {
-	    System.out.println("Invalid input");
-	    wrongAns();
-	    } */
+
 	if( !b ) {
 	    luke.setHP(luke.getHP() - 50);
 	    System.out.println("Your HP has been reduced to " + luke.getHP());
@@ -318,7 +311,6 @@ System.out.println("\nTO BE CONTINUED");
 	}
 	catch( IOException e ) {}
 
-	
 	if( t.equals("n") || t.equals("no")) { b = false; }
 	else if( t.equals("y") || t.equals("yes")) { b = true; }
 	else {
@@ -337,9 +329,12 @@ System.out.println("\nTO BE CONTINUED");
     }//end of name()
 
     public void kinSec() { //calls Kinematics questions
+	System.out.println("Please enter your answer in the form of a base-10 number."); //for Mr. Holmes
 	for( int c = 0; c < kinQs; c++ ) {
 	    if (luke.getHP() > 0) {
 		Question qk = new Kinematics();
+		System.out.println( "Would you like a hint?" );
+		if( getYN() ) { System.out.println(hint(qk)); }
 		findFind(qk);
 		System.out.println(qk);
 		getUserAnswer(qk);
@@ -351,9 +346,12 @@ System.out.println("\nTO BE CONTINUED");
     }//end of kinSec
 
     public void projSec() { //calls Projectiles questions
+	System.out.println("Please enter your answer in the form of a base-10 number."); //for Mr. Holmes	
 	for( int c = 0; c < proQs; c++ ) {
 	    if (luke.getHP() > 0) {
 		Question qp = new Projectiles();
+		System.out.println( "Would you like a hint?" );
+		if( getYN() ) { System.out.println(hint(qp)); }
 		findFind(qp);
 		System.out.println(qp);
 		getUserAnswer(qp);
@@ -364,6 +362,22 @@ System.out.println("\nTO BE CONTINUED");
 	}
     }//end of projSec
 
+    public String hint(Question q) {
+	String yoda =
+	    "__.-._\n" +
+	    "'-._\"7'\n" +
+	    " /'.-c\n" +
+	    " |  /T\n" +
+	    " _)_/LI\n";
+	String hi = "Greetings, " + luke.getName() +". Here to assist you I am.";
+	String kinIntro = "Here are the Kinematic equations at your disposal: \n";
+	String kinBody ="~ vf = vi+a*t \n~ d = vi + 1/2*a*t^2 \n~ vf^2 = vi^2 + 2*a*d";
+	String proj = "Here are the Projectile equations at your disposal: \n " + kinBody + "\n~ vix = vi*cos(theta) \n viy = vi*sin(theta)";
+	if( q instanceof Kinematics ) { return yoda+hi+kinIntro+kinBody; }
+	else if( q instanceof Projectiles) { return yoda+hi+proj; }
+	else { return yoda; }
+    }
+	    
     public static void main(String[] args) {
 	Game game = new Game();
 	game.newGame();
