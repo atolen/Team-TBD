@@ -195,7 +195,7 @@ pause(1500); */
     //getAnswer() gets the inputed answer to question
     public void getUserAnswer(Question q) {
 	//	findFind(q);
-	for(int i = 0; i <= find.size(); i++) {
+	for(int i = 0; i < find.size(); i++) {
 	    System.out.print(find.get(i) + ": ");
 	    try {
 		userAns = Double.parseDouble( in.readLine() );
@@ -209,20 +209,19 @@ pause(1500); */
     }//end of getUserAnswer
 	   
     //wrongAns() allows user to override game & deducts HP 
-    public boolean wrongAns() {
+    public void wrongAns() {
 	System.out.println("Your answer does not match. Would you like to proceed unharmed? (y/n)");
+	String t = getYN().toLowerCase();
 	boolean b = true;
-	//	if((getYN().toLowerCase()).equals("n") || (getYN().toLowerCase()).equals("no")) { b = false; }
-	//	else if( (getYN().toLowerCase()).equals("y") || (getYN().toLowerCase()).equals("yes")) { b = true; }
-	//	else {
-	//	    System.out.println("Invalid input");
-	//	    b = wrongAns();
-	//	}
+	if( t.equals("n") || t.equals("no")) { b = false; }
+	else if( t.equals("y") || t.equals("yes")) { b = true; }
+	else {
+	    System.out.println("Invalid input");
+	    wrongAns();
+	}
 	if( !b ) {
 	    luke.setHP(luke.getHP() - 10);
 	}
-	else {}
-	return b;
     }//end of wrongAns()
 
     //getBool() gets user input
@@ -232,13 +231,15 @@ pause(1500); */
 	    temp = in.readLine();
 	}
 	catch( IOException e ) {}
+	return temp;
+	/*	boolean b;
 	if((getYN().toLowerCase()).equals("n") || (getYN().toLowerCase()).equals("no")) { b = false; }
 	else if( (getYN().toLowerCase()).equals("y") || (getYN().toLowerCase()).equals("yes")) { b = true; }
 	else {
 	    System.out.println("Invalid input");
-	    getYN();
+	    b = getYN();
 	}
-	return retBool;
+	return b; */
     }
 
     //getName() gets name of user for Jedi
