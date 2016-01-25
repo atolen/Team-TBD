@@ -209,23 +209,37 @@ pause(1500); */
     }//end of getUserAnswer
 	   
     //wrongAns() allows user to override game & deducts HP 
-    public void wrongAns() {
+    public boolean wrongAns() {
 	System.out.println("Your answer does not match. Would you like to proceed unharmed? (y/n)");
-	String temp = "";
-	try {
-	    temp = in.readLine();
-	}
-	catch( IOException e ) {}
-	System.out.println("try");
-	if((temp.toLowerCase()).equals("n") || (temp.toLowerCase()).equals("no")) {
-	    luke.setHP(luke.getHP() - 10);
-	}
-	else if((temp.toLowerCase()).equals("y") || (temp.toLowerCase()).equals("yes")) {}
+	boolean b;
+	if((getYN().toLowerCase()).equals("n") || (getYN().toLowerCase()).equals("no")) { b = false; }
+	else if( (getYN().toLowerCase()).equals("y") || (getYN().toLowerCase()).equals("yes")) { b = true; }
 	else {
 	    System.out.println("Invalid input");
-	    wrongAns();
+	    b = wrongAns();
 	}
+	if( !b ) {
+	    luke.setHP(luke.getHP() - 10);
+	}
+	else {}
+	return b;
     }//end of wrongAns()
+
+    //getBool() gets user input
+    public String getYN() {
+	String temp = "";
+	try {
+	    in.readLine();
+	}
+	catch( IOException e ) {}
+	if((getYN().toLowerCase()).equals("n") || (getYN().toLowerCase()).equals("no")) { b = false; }
+	else if( (getYN().toLowerCase()).equals("y") || (getYN().toLowerCase()).equals("yes")) { b = true; }
+	else {
+	    System.out.println("Invalid input");
+	    getYN()
+	}
+	return retBool;
+    }
 
     //getName() gets name of user for Jedi
     public void name() {
