@@ -194,7 +194,7 @@ pause(1500); */
 
     //getAnswer() gets the inputed answer to question
     public void getUserAnswer(Question q) {
-	//	findFind(q);
+	System.out.println(find);
 	for(int i = 0; i < find.size(); i++) {
 	    System.out.print(find.get(i) + ": ");
 	    try {
