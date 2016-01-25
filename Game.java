@@ -17,6 +17,7 @@ public class Game {
     public final static int cirQs = 2; // Circular
 
     private boolean gameOver; // hp at 0? answer all questions?
+    private ArrayList[] find; // what must the user find?
     private double userAns; // holds user answer
 
     private InputStreamReader isr;
@@ -100,7 +101,21 @@ public class Game {
 	
 	System.out.println("Greetings, young one! What do you call yourself?");
 	name();
-	System.out.println("Welcome, " + luke.getName() +".");
+	System.out.println("Welcome, " + luke.getName() +".\n");
+	pause(1000);
+
+	prt = "You are about to embark on a journey throughout the galaxy, learning the ways of the Force and other vectors to battle the Empire.\n";
+	prt += "In order to proceed and follow your destiny to become a physics BOSS, you must apply the laws of the universe,also known as mechanical equations, to every given scenario, and find the missing componenet correctly.\n";
+	System.out.print( prt + "\n" );
+	pause(10000);
+
+	prt = "PLEASE NOTE: The point of this game is to help people practice physics!\n";
+	prt += "If for some reason our program gives you the wrong answer, you have the option of overriding it.\n";
+	prt += "But have caution! The practice is for your own good, so the only person who will suffer most certain death is not you the Jedi, but you the student.\n";
+	System.out.print( prt + "\n" );
+	pause(10000);
+
+	System.out.println("Good luck! May the Force be with you.");
 	//================END OF INTRO================
     }//end of newGame()
     //====================================================
@@ -114,12 +129,26 @@ public class Game {
 	}
     }//end of pause()
 
+    //fingFind() finds what the user has to find
+    public String findFind(Question ques) {
+	for(String key : ques.unknowns.keyset()) {
+	    find.add(key);
+	}
+	return find;
+    }//end of findFind()
+
+    //compareAnswer() checks if input answer is deemed "close enough"
+    public String compareAnswer(Question ans) {
+    }//end of compareAnswer()
+
     //getAnswer() gets the inputed answer to question
     public void getUserAnswer() {
-	try {
-	    userAns = Double.parseDouble( in.readLine() );
-	}
-	catch (IOException e) {}
+	for (String key : find) {
+	    System.out.print(key + ": ");
+	    try {
+		userAns = Double.parseDouble( in.readLine() );
+	    }
+	    catch (IOException e) {}
     }//end of getUserAnswer
 
     //getName() gets name of user for Jedi
@@ -134,6 +163,7 @@ public class Game {
     public void kinSec() { //calls Kinematics questions
 	while(kinQs > 0) {
 	    Kinematics q = new Kinematics();
+	    findFind(q);
 	}
     }//enf of kinSec
 
