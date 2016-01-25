@@ -60,7 +60,7 @@ public class Game {
 	pause(1000);
 		prt =
 	    "                          EPISODE III.I-IV\n\n" + 
-	    "                           THE FORCE RENEWED" +
+	    "                          THE FORCE RENEWED" +
 	    "\n\n";
 	System.out.print(prt);
 	pause(2000);
@@ -81,9 +81,9 @@ public class Game {
 	    "\t\t       planet. You, a young rebel, wish to\n" +
 	    "\t\t     master the Force, an ancient but powerful\n" +
 	    "\t\t   religion, in order to aide the Rebel Alliance.\n" +
-	    "\t\t  Your objective: acquire the DEATH STAR's blueprints.\n"+
-	    "\t\t        It is only with these that freedom can be  \n" +
-	    "\t\t            restored to the galaxy...\n";
+	    "\t\tYour objective: acquire the DEATH STAR's blueprints.\n"+
+	    "\t\t       It is only with these that freedom can be  \n" +
+	    "\t\t           restored to the galaxy...\n";
 	    
 
 	System.out.print(prt);
