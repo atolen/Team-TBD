@@ -216,7 +216,7 @@ pause(1500); */
 	    temp = in.readLine();
 	}
 	catch( IOException e ) {}
-
+	System.out.println("try");
 	if((temp.toLowerCase()).equals("n") || (temp.toLowerCase()).equals("no")) {
 	    luke.setHP(luke.getHP() - 10);
 	}
