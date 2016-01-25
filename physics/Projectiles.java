@@ -202,7 +202,7 @@ public class Projectiles extends Question {
     public static double proj3(double vix, double vi) { //find theta >> vix, vi known
 	return Math.toDegrees(Math.acos(vix/vi)); //arccos
     }
-
+    
     public static double proj4(double viy, double vi) { //find theta >> viy,vi known
 	return Math.toDegrees(Math.asin(viy/vi)); //arcsin
     }
