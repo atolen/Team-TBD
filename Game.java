@@ -65,25 +65,25 @@ public class Game {
 	System.out.print(prt);
 	pause(2000);
 	prt = 
-	    "\t\t      It is a period of civil war.\n" +
-	    "\t\t       Rebel spaceships, dwelling\n" +
-	    "\t\t     from a hidden base, are planning\n" +
-	    "\t\t      their first victory against\n" +
-	    "\t\t       the evil Galactic Empire.\n"+
+	    "\t\t It is a period of civil war.\n" +
+	    "\t\t Rebel spaceships, dwelling\n" +
+	    "\t\t in a hidden base, are planning\n" +
+	    "\t\t their first victory against\n" +
+	    "\t\t the evil Galactic Empire.\n"+
 	    "\n\n";
 	System.out.print(prt);
 	pause(5000);
 
 	prt =
-	    "\t\t        The Empire has built an armored \n" +
-	    "\t\t         space station, the DEATH STAR, \n" +
-	    "\t\t      powerful enough to destory an entire \n" +
-	    "\t\t       planet. You, a young rebel, wish to\n" +
-	    "\t\t     master the Force, an ancient but powerful\n" +
-	    "\t\t   religion, in order to aide the Rebel Alliance.\n" +
-	    "\t\tYour objective: acquire the DEATH STAR's blueprints.\n"+
-	    "\t\t       It is only with these that freedom can be  \n" +
-	    "\t\t           restored to the galaxy...\n";
+	    "\t\t The Empire has built an armored \n" +
+	    "\t\t space station, the DEATH STAR, \n" +
+	    "\t\t powerful enough to destory an entire \n" +
+	    "\t\t planet. You, a young rebel, wish to\n" +
+	    "\t\t master the Force, an ancient but powerful\n" +
+	    "\t\t religion, in order to aide the Rebel Alliance.\n" +
+	    "\t\t Your objective: acquire the DEATH STAR's blueprints.\n"+
+	    "\t\t It is only with these that freedom can be  \n" +
+	    "\t\t restored to the galaxy...\n";
 	    
 
 	System.out.print(prt);
@@ -246,10 +246,10 @@ System.out.println("\nTO BE CONTINUED");
 	for( int c = 0; c < kinQs; c++ ) {
 	    if (luke.getHP() > 0) {
 		Question qk = new Kinematics();
+		findFind(qk);
+		System.out.println(qk);		
 		System.out.println( "Would you like a hint?" );
 		if( getYN() ) { System.out.println(hint(qk)); }
-		findFind(qk);
-		System.out.println(qk);
 		getUserAnswer(qk);
 	    }
 	    else {
@@ -263,10 +263,10 @@ System.out.println("\nTO BE CONTINUED");
 	for( int c = 0; c < proQs; c++ ) {
 	    if (luke.getHP() > 0) {
 		Question qp = new Projectiles();
-		System.out.println( "Would you like a hint?" );
-		if( getYN() ) { System.out.println(hint(qp)); }
 		findFind(qp);
 		System.out.println(qp);
+		System.out.println( "Would you like a hint?" );
+		if( getYN() ) { System.out.println(hint(qp)); }		
 		getUserAnswer(qp);
 	    }
 	    else {
