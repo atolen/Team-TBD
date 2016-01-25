@@ -34,7 +34,6 @@ public class Game {
 	//==============INTRODUCTION=====================
 	prt = "\n";
 	System.out.print( prt );
-	/*
 	pause(1000);
 
 	prt = "\t\tA long time ago in a galaxy far,\n\t\tfar away...\n\n";
@@ -110,14 +109,14 @@ public class Game {
 	prt += "If for some reason our program gives you the wrong answer, you have the option of overriding it.\n";
 	prt += "But have caution! The practice is for your own good, so the only person who will suffer most certain death is not you the Jedi, but you the student.\n";
 	System.out.print( prt + "\n" );
-	pause(5000);
+	pause(50000);
 
-	System.out.println("Good luck! May the Force be with you."); */
+	System.out.println("Good luck! May the Force be with you.");
+	pause(2000);
 	//================END OF INTRO================
-	kinSec();
 	
 	//==================THE MEAT==================
-	/*
+	
 	prt = "\nFar off in a distant galaxy, the starship belonging to Princess Leia, a young member of the Imperial Senate,\n @-_-@ \n";
 	prt += " is intercepted in the course of a secret mission by a massive Imperial Star Destroyer. An imperial boarding party blasts its way onto the captured vessel, and after a fierce firefight the crew of Leia’s ship is subdued.\n";
 	prt += "The dark, forbidding figure of Darth Vader appears\n";
@@ -159,7 +158,74 @@ prt +=
 "                 |_|_|    ||'----'||                 \n" +
 "                /_/ \\_\\  /__|    |__\\             ";
 System.out.println(prt);
-pause(1500); */
+pause(1500);
+
+prt = "After crash-landing on the planet below, a barren, desert world called Tatooine, the droids set off in search of civilization but soon quarrel over the way to go. R2 insists that he has a mission to perform, but C-3PO wants no part of such an adventure.\n\n";
+System.out.print(prt);
+pause(20000);
+
+prt = "The two droids go their separate ways but are soon reunited when they are both captured by Jawas, child-sized scavengers who trade in droids and technological scraps. The Jawas sell the droids to your Owen Lars, your uncle, a moisture farmer on a remote homestead.Owen’s nephew, you, young" + name + ", cleans the droids and, as you do so, stumbles across a bit of the message Princess Leia had hidden inside R2. The holographic message is addressed to “Obi-Wan Kenobi,” and you, fascinated by the princess, wonders if she means Ben Kenobi, a mysterious hermit who lives out in the desert wilds. R2, however, refuses to divulge any more of the message. When you ask your uncle about the identity of Obi-Wan, Owen is reluctant to even discuss the subject, but he does drop one tantalizing hint: Obi-Wan was a friend of your father, whom you never knew. You mention your desire to leave home to attend the Imperial Academy for starpilots, but Uncle Owen is discouraging, much to your frustration.\n\n";
+System.out.println(prt);
+pause(30000);
+
+prt = "You realize that R2-D2 had slipped away! You set out on a search for the truant droid the next morning with C-3PO, but run into Sandpeople, who knock you out. You awake to just the man you had been searching for: Ben Kenobi. He frightens off the Sandpeople and brings the group back to his humble shelter. There, Ben explains that he was called Obi-Wan back in days when he was a Jedi Knight, one of an ancient order of warriors who fought for peace and justice in the time of the Old Republic, before the coming of the evil Galactic Empire. Further, he informs Luke that Luke’s father was also a Jedi, one of Ben’s closest friends, and that his father was killed by Darth Vader, a former pupil of Ben’s who turned to the dark side of the Force. The Force, Ben explains, is the source of a Jedi’s power. It is an energy field created and sustained by life itself, and it flows through the universe, binding it together. Through training, a Jedi is able to tap into the Force and gain great power and wisdom, but, as the example of Vader shows, there is a seductive, evil path to the Force as well.\n\n";
+    System.out.print(prt);
+    pause(30000);
+
+    prt = "Ben gives you your father’s lightsaber, the traditional weapon of a Jedi. After viewing the entirety of Leia’s message, Ben says that he intends to join up with the Rebel Alliance challenging the Empire and to bring them the plans hidden in R2’s memory. Ben invites you along but you refrain. It is only after you race home to find your family murdered by the Empire that you resolve to join Ben and become a Jedi.\n\n";
+System.out.println(prt);
+pause(20000);
+
+prt = "With the droids in tow, Ben and Luke journey to Mos Eisley spaceport in search of a ship to take them to Alderaan, the Princess’s home planet. The pair manages to hire Han Solo, a brash smuggler, and his copilot, the Wookie Chewbacca, to take them to Alderaan without attracting the attention of the Empire.Solo and Chewbacca are surprised when Imperial troops appear and start firing on the ship in an attempt to reclaim the droids, and the Falcon barely makes it off Tatooine and into hyperspace on the way to Alderaan.\n\n";
+System.out.print(prt);
+pause(30000);
+
+prt = "On the Death Star, meanwhile, Tarkin has decided to break Leia by threatening her home planet, Alderaan, with destruction. Faced with this appalling dilemma, Leia reveals the location of the hidden base, only to have Tarkin proceed with the attack on Alderaan, merely to demonstrate the power of the Death Star.\n\n";
+System.out.print(prt);
+pause(30000);
+
+prt = "Aboard the Millennium Falcom, Ben feels a massive tremor in the Force. You begin training with your lightsaber.\nSee if you can find the missing component (the null component) in the following kinematics problems:\n\n";
+System.out.print(prt);
+
+//=======================KINEMATICS=====================
+kinSec();
+if (gameOver) {
+    System.out.println( "Oh no! You haven't survied to master the Force! Try again next time");
+    return;
+}
+//=====================================================
+
+prt = "Congrats! You are able to defend yourself by sensing with feelings alone, thereby taking your first steps, as Ben says, into “a larger world.” The ship exits hyperspace where Alderaan should be, only to find the planet missing and an asteroid field in its place. Ben realizes the horrible truth when they catch sight of the nearby Death Star, and the Millennium Falcon is quickly captured. The group manages to hide from the guards in Han’s smuggling compartments, but Vader senses the presence of his old master, Obi-Wan.\n";
+System.out.println(prt);
+pause(30000);
+
+prt = "The ship is unable to escape the Death Star as long as the station’s tractor beam is operational, so Ben goes off alone to deactivate it. In his absence, the others learn that Princess Leia is aboard the station, and you convince them to attempt a rescue. You an Han disguise yourselves as stormtroopers and, with the droids plugged into the station’s computers, break Leia out of her cell. Unfortunately, your activities are soon discovered, and the rescue takes a detour through a massive, monster-infested garbage compactor and several corridors and pitfalls swarming with Imperial troops. Leia is unimpressed with her rescuers’ planning and soon begins to issue the orders, much to Han’s chagrin. As the group fights its way back to the Falcon, Ben stealthily deactivates the tractor beam. On his way to the ship, Ben is confronted by Darth Vader, who is eager to face his old master. Vader and Ben duel with lightsabers, and the fight draws the attention of the guards. Realizing he is trapped, and not wanting to endanger his friends, Ben allows Vader to strike him down, only to disappear before Vader’s stroke hits, merging his consciousness with the Force. You are horrified and lashes out, but the others force him onto the Falcon and make they their escape.\n\n";
+System.out.print(prt);
+pause(60000);
+
+prt = "The fleeing ship is pursued by Imperial fighters but finally escapes, though Leia is convinced that you are being tracked, as indeed you are. The group travels to the Rebel base, with the Death Star right behind. A quick scan of the blueprints provided by R2 offers one slim chance: the Death Star has an Achilles’ heel. A direct hit on a small, easily overlooked thermal port will destroy the station, if only a fighter can get close enough to target it. You sign up for the desperate assault, but you are disappointed that Han, having received his payment, plans to leave immediately. Watched anxiously by the Rebel command, the fleet of small, single-pilot fighters speeds toward the massive, impregnable Death Star. As the station slowly moves into position to obliterate the Rebels, the pilots maneuver down a narrow trench along the station’s equator, where the thermal port lies hidden. Darth Vader leads the counterattack himself and destroys many of the Rebels, including Luke’s boyhood friend Biggs, in ship-to-ship combat. Finally, it is up to you to make a run at the target, and you are saved from Vader at the last minute by Han Solo, who returns in the nick of time and sends Vader spinning away from the station. Heeding Ben’s disembodied voice, you switches off his computer and uses the Force to guide your aim.\n\n";
+System.out.print(prt);
+pause(80000);
+
+prt = "In order to use the Force and take down the Death Star, solve the following projectile problems\n";
+System.out.print(prt);
+pause(1500);
+
+//===================PROJECTILES=================
+
+projSec();
+if (gameOver) {
+    System.out.println("Oh no! You did not acces the Force to destroy the Death Star.\n GAME OVER");
+    return; 
+}
+//==============================================
+
+prt = "Against all odds, you succeed and destroys the Death Star, dealing a major defeat to the Empire. Now you are on the path to becoming a Jedi Knight, and master the remaining topics in physics.";
+System.out.println(prt);
+pause(1500);
+
+System.out.println("\nTO BE CONTINUED");
+
     }//end of newGame()
     //====================================================
 
@@ -252,19 +318,29 @@ pause(1500); */
 
     public void kinSec() { //calls Kinematics questions
 	for( int c = 0; c < kinQs; c++ ) {
-	    Question q = new Kinematics();
-	    findFind(q);
-	    System.out.println(q.vars);
-	    getUserAnswer(q);
+	    if (luke.getHP() > 0) {
+		Question qk = new Kinematics();
+		findFind(qk);
+		System.out.println(qk.vars);
+		getUserAnswer(qk);
+	    }
+	    else {
+		gameOver = true;
+	    }
 	}
     }//end of kinSec
 
     public void projSec() { //calls Projectiles questions
 	for( int c = 0; c < proQs; c++ ) {
-	    Question q = new Projectiles();
-	    findFind(q);
-	    System.out.println(q.vars);
-	    getUserAnswer(q);
+	    if (luke.getHP() > 0) {
+		Question qp = new Projectiles();
+		findFind(qp);
+		System.out.println(qp.vars);
+		getUserAnswer(qp);
+	    }
+	    else {
+		gameOver = true; 
+	    }
 	}
     }//end of projSec
 
