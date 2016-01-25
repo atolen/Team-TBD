@@ -265,7 +265,7 @@ System.out.println("\nTO BE CONTINUED");
 		Question qp = new Projectiles();
 		findFind(qp);
 		System.out.println(qp);
-		System.out.println( "Would you like a hint?" );
+		System.out.println( "Would you like a hint? (y/n)" );
 		if( getYN() ) { System.out.println(hint(qp)); }		
 		getUserAnswer(qp);
 	    }
@@ -282,8 +282,8 @@ System.out.println("\nTO BE CONTINUED");
 	    " /'.-c\n" +
 	    " |  /T\n" +
 	    " _)_/LI\n";
-	String hi = "Greetings, " + luke.getName() +". Here to assist you I am.";
-	String kinIntro = "Here are the Kinematic equations at your disposal: \n";
+	String hi = "Greetings, " + luke.getName() +". Here to assist you I am. ";
+	String kinIntro = "These are the Kinematic equations at your disposal: \n";
 	String kinBody ="~ vf = vi+a*t \n~ d = vi + 1/2*a*t^2 \n~ vf^2 = vi^2 + 2*a*d";
 	String proj = "Here are the Projectile equations at your disposal: \n " + kinBody + "\n~ vix = vi*cos(theta) \n viy = vi*sin(theta)";
 	if( q instanceof Kinematics ) { return yoda+hi+kinIntro+kinBody; }
